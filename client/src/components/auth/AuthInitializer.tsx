@@ -4,23 +4,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 import type { AppDispatch, RootState } from "../../stores/store";
 
-import { getCurrentUser } from "../../features/auth/authSlice";
+import {
+  getCurrentUser,
+  setAuthInitialized,
+} from "../../features/auth/authSlice";
 
 import { refreshAccessToken } from "../../api/axios";
 
 /* =========================================================
-   ABN FLEET SYSTEM
+   ABN TRADE
    AUTH INITIALIZER
    ========================================================= */
 
 function AuthInitializer() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { initialized } = useSelector((state: RootState) => state.auth);
-
-  /* =======================================================
-     INITIALIZE AUTH
-     ======================================================= */
+  const initialized = useSelector((state: RootState) => state.auth.initialized);
 
   useEffect(() => {
     if (initialized) {
@@ -30,34 +29,30 @@ function AuthInitializer() {
     let cancelled = false;
 
     const initializeAuth = async () => {
-      try {
-        console.log("ABN AUTH: Initializing session...");
+      console.log("ABN AUTH: Initializing session...");
 
+      try {
         /* =================================================
-           REFRESH ACCESS TOKEN
+           RESTORE ACCESS TOKEN
            ================================================= */
 
         const token = await refreshAccessToken();
 
-        /*
-         * Component sudah unmount.
-         */
         if (cancelled) {
           return;
         }
 
         /* =================================================
-           TIDAK ADA SESSION
+           NO ACTIVE SESSION
            ================================================= */
 
         if (!token) {
           console.info("ABN AUTH: Tidak ada session aktif.");
-
           return;
         }
 
         /* =================================================
-           GET CURRENT USER
+           RESTORE CURRENT USER
            ================================================= */
 
         await dispatch(getCurrentUser()).unwrap();
@@ -70,25 +65,8 @@ function AuthInitializer() {
           console.info("ABN AUTH: Session tidak aktif.", error);
         }
       } finally {
-        /*
-         * Sangat penting:
-         *
-         * AuthInitializer harus selesai
-         * apapun hasil refresh.
-         *
-         * getCurrentUser.fulfilled/rejected juga
-         * mengubah initialized = true.
-         *
-         * Tetapi jika refresh gagal sebelum
-         * getCurrentUser dijalankan, kita tetap
-         * harus menandai initialization selesai.
-         */
-
         if (!cancelled) {
-          dispatch({
-            type: "auth/setAuthInitialized",
-            payload: true,
-          });
+          dispatch(setAuthInitialized(true));
         }
       }
     };

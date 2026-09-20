@@ -1,4 +1,4 @@
-import AuthInitializer from "../components/auth/AuthInitializer";
+// import AuthInitializer from "../components/auth/AuthInitializer";
 import AppRouter from "./router";
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
           AUTH INITIALIZER
           =================================================== */}
 
-      <AuthInitializer />
+      {/* <AuthInitializer /> */}
 
       {/* ===================================================
           APPLICATION ROUTER
