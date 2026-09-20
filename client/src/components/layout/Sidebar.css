@@ -1,0 +1,1817 @@
+/* =========================================================
+   ABN TRACKER
+   SIDEBAR THEME
+   Mengikuti <html data-theme="light|dark">
+   ========================================================= */
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+
+  width: 250px;
+  min-width: 250px;
+
+  height: 100vh;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(180deg, #0f172a 0%, #111c32 100%);
+
+  color: #cbd5e1;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  z-index: 200;
+
+  box-sizing: border-box;
+
+  border-right: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.sidebar-brand {
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 0 17px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+  box-sizing: border-box;
+}
+
+.brand-mark {
+  width: 60px;
+  height: 60px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background: transparent;
+  border-radius: 0;
+
+  overflow: hidden;
+}
+
+.brand-mark img {
+  display: block;
+
+  width: 60px;
+  height: 60px;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+}
+
+.brand-text {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-text strong {
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+}
+
+.brand-text span {
+  margin-top: 4px;
+
+  color: #64748b;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  line-height: 1.1;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.sidebar-close {
+  display: none;
+
+  width: 34px;
+  height: 34px;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #94a3b8;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sidebar-close:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+}
+
+/* =========================================================
+   STATUS CARD
+   ========================================================= */
+
+.sidebar-status-card {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 14px 12px 7px;
+  padding: 10px 11px;
+
+  border: 1px solid rgba(96, 165, 250, 0.1);
+  border-radius: 9px;
+
+  background: rgba(37, 99, 235, 0.07);
+}
+
+.sidebar-status-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 7px;
+
+  background: rgba(37, 99, 235, 0.14);
+
+  color: #60a5fa;
+}
+
+.sidebar-status-info {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-status-info strong {
+  color: #cbd5e1;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  line-height: 1.1;
+
+  letter-spacing: 0.5px;
+
+  white-space: nowrap;
+}
+
+.sidebar-status-info span {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 4px;
+
+  color: #64748b;
+
+  font-size: 8px;
+
+  line-height: 1;
+}
+
+.sidebar-status-info i {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.08);
+}
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.sidebar-section {
+  padding-top: 5px;
+}
+
+.sidebar-section-title {
+  display: block;
+
+  padding: 14px 19px 8px;
+
+  color: #475569;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  letter-spacing: 1.2px;
+}
+
+/* =========================================================
+   NAV
+   ========================================================= */
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+
+  padding: 0 9px;
+}
+
+/* =========================================================
+   ROOT LINK
+   ========================================================= */
+
+.sidebar-link {
+  position: relative;
+
+  min-height: 41px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 2px 0;
+  padding: 0 11px;
+
+  border-radius: 8px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.055);
+  color: #f8fafc;
+}
+
+.sidebar-link:active {
+  transform: translateX(1px);
+}
+
+.sidebar-link-icon {
+  width: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.sidebar-link-label {
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   ROOT ACTIVE
+   ========================================================= */
+
+.sidebar-link.active {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+
+  color: #ffffff;
+
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+}
+
+.sidebar-link.active:hover {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+}
+
+/* =========================================================
+   LIVE TRACKING
+   ========================================================= */
+
+.tracking-link:not(.active) {
+  background: rgba(37, 99, 235, 0.045);
+}
+
+.sidebar-live {
+  margin-left: auto;
+
+  padding: 3px 5px;
+
+  border-radius: 4px;
+
+  background: rgba(34, 197, 94, 0.1);
+
+  color: #4ade80;
+
+  font-size: 6px;
+  font-weight: 900;
+
+  letter-spacing: 0.6px;
+
+  line-height: 1;
+}
+
+.sidebar-link.active .sidebar-live {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* =========================================================
+   ROOT MENU GROUP
+   ========================================================= */
+
+.sidebar-menu-group {
+  width: 100%;
+  margin: 2px 0;
+}
+
+/* =========================================================
+   ROOT PARENT
+   ========================================================= */
+
+.sidebar-parent-link {
+  width: 100%;
+
+  min-height: 41px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  margin: 0;
+  padding: 0 11px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #94a3b8;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sidebar-parent-link:hover {
+  background: rgba(255, 255, 255, 0.055);
+  color: #f8fafc;
+}
+
+.sidebar-parent-link.active {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+
+  color: #ffffff;
+
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.2);
+}
+
+/* =========================================================
+   CHEVRON
+   ========================================================= */
+
+.sidebar-chevron {
+  width: 20px;
+  height: 20px;
+
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #64748b;
+
+  transition:
+    transform 0.2s ease,
+    color 0.15s ease;
+}
+
+.sidebar-chevron.open {
+  transform: rotate(90deg);
+}
+
+.sidebar-parent-link.active .sidebar-chevron {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-parent-link:hover .sidebar-chevron {
+  color: #cbd5e1;
+}
+
+/* =========================================================
+   LEVEL 1 SUBMENU
+   Fleet
+   Operations
+   Monitoring
+   Integration
+   Administration
+   ========================================================= */
+
+.sidebar-submenu {
+  max-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  transition:
+    max-height 0.28s ease,
+    opacity 0.18s ease,
+    margin 0.22s ease;
+}
+
+.sidebar-submenu.open {
+  /*
+   * Jangan gunakan 100px.
+   * Administration saja sudah lebih dari itu.
+   */
+  max-height: 1000px;
+
+  margin-top: 2px;
+  margin-bottom: 4px;
+
+  opacity: 1;
+}
+
+/* =========================================================
+   LEVEL 1 LINK
+   ========================================================= */
+
+.sidebar-submenu-link {
+  position: relative;
+
+  min-height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin: 1px 0 1px 22px;
+  padding: 0 10px;
+
+  border-radius: 7px;
+
+  color: #64748b;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.sidebar-submenu-link:hover {
+  background: rgba(255, 255, 255, 0.045);
+  color: #cbd5e1;
+}
+
+.sidebar-submenu-link.active {
+  background: rgba(37, 99, 235, 0.14);
+  color: #60a5fa;
+}
+
+.sidebar-submenu-link.active:hover {
+  background: rgba(37, 99, 235, 0.18);
+  color: #93c5fd;
+}
+
+/* =========================================================
+   SUBMENU LINE
+   ========================================================= */
+
+.sidebar-submenu-line {
+  position: absolute;
+
+  left: -11px;
+
+  top: 0;
+  bottom: 0;
+
+  width: 1px;
+
+  background: rgba(96, 165, 250, 0.18);
+
+  border-radius: 1px;
+}
+
+/* =========================================================
+   SUBMENU ICON
+   ========================================================= */
+
+.sidebar-submenu-icon {
+  width: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #64748b;
+}
+
+.sidebar-submenu-link:hover .sidebar-submenu-icon {
+  color: #94a3b8;
+}
+
+.sidebar-submenu-link.active .sidebar-submenu-icon {
+  color: #60a5fa;
+}
+
+/* =========================================================
+   SUBMENU LABEL
+   ========================================================= */
+
+.sidebar-submenu-label {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   NESTED GROUP
+   Administration
+      └ Users
+         ├ Users List
+         └ User Activity
+
+   ========================================================= */
+
+.sidebar-nested-group {
+  width: 100%;
+
+  margin: 1px 0;
+}
+
+/* =========================================================
+   NESTED PARENT
+   ========================================================= */
+
+.sidebar-nested-parent {
+  width: calc(100% - 12px);
+
+  margin-left: 22px;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  text-align: left;
+}
+
+.sidebar-nested-parent:hover {
+  background: rgba(255, 255, 255, 0.045);
+  color: #cbd5e1;
+}
+
+.sidebar-nested-parent.active {
+  background: rgba(37, 99, 235, 0.14);
+
+  color: #60a5fa;
+}
+
+.sidebar-nested-parent .sidebar-chevron {
+  width: 18px;
+  height: 18px;
+
+  margin-left: auto;
+}
+
+.sidebar-nested-parent.active .sidebar-chevron {
+  color: #60a5fa;
+}
+
+/* =========================================================
+   LEVEL 2 SUBMENU
+   ========================================================= */
+
+.sidebar-nested-submenu {
+  max-height: 0;
+
+  margin: 0;
+  padding: 0;
+
+  opacity: 0;
+
+  overflow: hidden;
+
+  transition:
+    max-height 0.25s ease,
+    opacity 0.18s ease,
+    margin 0.2s ease;
+}
+
+.sidebar-nested-submenu.open {
+  max-height: 500px;
+
+  margin-top: 1px;
+  margin-bottom: 3px;
+
+  opacity: 1;
+}
+
+/* =========================================================
+   LEVEL 2 LINK
+   ========================================================= */
+
+.sidebar-nested-submenu > .sidebar-submenu-link {
+  /*
+   * Level 2 lebih masuk ke kanan
+   */
+  margin-left: 44px;
+
+  width: calc(100% - 44px);
+
+  min-height: 34px;
+
+  padding-left: 9px;
+
+  font-size: 9px;
+
+  color: #64748b;
+}
+
+.sidebar-nested-submenu > .sidebar-submenu-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+
+  color: #cbd5e1;
+}
+
+.sidebar-nested-submenu > .sidebar-submenu-link.active {
+  background: rgba(37, 99, 235, 0.13);
+
+  color: #60a5fa;
+}
+
+/* =========================================================
+   LEVEL 2 LINE
+   ========================================================= */
+
+.sidebar-nested-submenu > .sidebar-submenu-link .sidebar-submenu-line {
+  left: -10px;
+
+  background: rgba(96, 165, 250, 0.14);
+}
+
+/* =========================================================
+   LEVEL 2 ICON
+   ========================================================= */
+
+.sidebar-nested-submenu > .sidebar-submenu-link .sidebar-submenu-icon {
+  width: 18px;
+
+  color: #475569;
+}
+
+.sidebar-nested-submenu > .sidebar-submenu-link:hover .sidebar-submenu-icon {
+  color: #94a3b8;
+}
+
+.sidebar-nested-submenu > .sidebar-submenu-link.active .sidebar-submenu-icon {
+  color: #60a5fa;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.sidebar-link:focus-visible,
+.sidebar-help:focus-visible,
+.sidebar-close:focus-visible,
+.sidebar-parent-link:focus-visible,
+.sidebar-submenu-link:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  padding: 10px 9px 12px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    min-width: 250px;
+
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .sidebar-close {
+    display: flex;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .sidebar {
+    width: 235px;
+    min-width: 235px;
+  }
+
+  .sidebar-brand {
+    padding: 0 14px;
+  }
+
+  .brand-mark {
+    width: 54px;
+    height: 54px;
+  }
+
+  .brand-mark img {
+    width: 54px;
+    height: 54px;
+  }
+
+  .sidebar-nav {
+    padding: 0 8px;
+  }
+
+  .sidebar-bottom {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .sidebar-submenu-link {
+    margin-left: 20px;
+  }
+
+  .sidebar-nested-submenu > .sidebar-submenu-link {
+    margin-left: 40px;
+
+    width: calc(100% - 40px);
+  }
+}
+
+/* =========================================================
+   ABN SUPPORT BUTTON
+   ========================================================= */
+
+.sidebar-help {
+  position: relative;
+  z-index: 10;
+
+  width: 100%;
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 0;
+  padding: 8px 11px;
+
+  border: 1px solid rgba(96, 165, 250, 0.12);
+  border-radius: 9px;
+
+  background: rgba(37, 99, 235, 0.06);
+  color: #94a3b8;
+
+  font-family: inherit;
+  text-align: left;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.sidebar-help:hover {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(96, 165, 250, 0.22);
+  color: #ffffff;
+}
+
+.sidebar-help:active {
+  transform: translateY(1px);
+}
+
+.sidebar-help:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+.sidebar-help > svg {
+  flex-shrink: 0;
+  color: #60a5fa;
+}
+
+.sidebar-help > div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-help strong {
+  color: #cbd5e1;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+.sidebar-help span {
+  margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 8px;
+  font-weight: 500;
+
+  line-height: 1.2;
+}
+
+.sidebar-help:hover strong {
+  color: #ffffff;
+}
+
+.sidebar-help:hover span {
+  color: #94a3b8;
+}
+
+/* =========================================================
+   SUPPORT MODAL OVERLAY
+   ========================================================= */
+
+.support-modal-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.6);
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  box-sizing: border-box;
+
+  overflow-y: auto;
+}
+
+/* =========================================================
+   SUPPORT MODAL
+   ========================================================= */
+
+.support-modal {
+  position: relative;
+
+  width: min(440px, calc(100vw - 40px));
+
+  max-height: calc(100vh - 40px);
+  max-height: calc(100dvh - 40px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 30px 80px rgba(15, 23, 42, 0.3),
+    0 10px 30px rgba(15, 23, 42, 0.15);
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.support-modal-header {
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 14px 18px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+.support-modal-title {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+}
+
+.support-modal-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.support-modal-title h3 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 15px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+.support-modal-title span {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  line-height: 1.2;
+}
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.support-modal-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #64748b;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.support-modal-close:hover {
+  background: #f1f5f9;
+
+  color: #0f172a;
+}
+
+.support-modal-close:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.support-modal-body {
+  padding: 18px;
+
+  overflow-y: auto;
+
+  box-sizing: border-box;
+}
+
+.support-modal-description {
+  margin: 0 0 16px;
+
+  color: #475569;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   SUPPORT OPTIONS
+   ========================================================= */
+
+.support-options {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.support-option {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.support-option:hover {
+  background: #f8fafc;
+
+  border-color: #cbd5e1;
+
+  transform: translateY(-1px);
+}
+
+.support-option:active {
+  transform: translateY(0);
+}
+
+.support-option:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+.support-option-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+}
+
+.support-option-content {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.support-option-content strong {
+  color: #0f172a;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+.support-option-content span {
+  margin-top: 4px;
+
+  color: #64748b;
+
+  font-size: 9px;
+
+  line-height: 1.3;
+}
+
+/* =========================================================
+   WHATSAPP
+   ========================================================= */
+
+.support-option-whatsapp {
+  border-color: rgba(34, 197, 94, 0.18);
+}
+
+.support-option-whatsapp .support-option-icon {
+  background: rgba(34, 197, 94, 0.1);
+  color: #16a34a;
+}
+
+.support-option-whatsapp:hover {
+  background: rgba(34, 197, 94, 0.04);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* =========================================================
+   NOTE
+   ========================================================= */
+
+.support-modal-note {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 8px;
+
+  margin-top: 15px;
+  padding: 10px 11px;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 9px;
+
+  line-height: 1.5;
+}
+
+.support-modal-note svg {
+  flex-shrink: 0;
+
+  margin-top: 1px;
+
+  color: #22c55e;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.support-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+
+  padding: 12px 18px;
+
+  border-top: 1px solid #e2e8f0;
+
+  background: #f8fafc;
+}
+
+.support-modal-cancel {
+  min-width: 70px;
+
+  padding: 8px 13px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.support-modal-cancel:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.support-modal-cancel:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .support-modal-overlay {
+    align-items: flex-end;
+
+    padding: 10px;
+  }
+
+  .support-modal {
+    width: 100%;
+
+    max-height: calc(100vh - 20px);
+    max-height: calc(100dvh - 20px);
+
+    border-radius: 16px;
+  }
+}
+
+/* =========================================================
+   WHATSAPP CONTACT OPTIONS
+   ========================================================= */
+
+.whatsapp-contact-content span {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   EMAIL CONTACT OPTIONS
+   ========================================================= */
+
+.email-options {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(96, 165, 250, 0.18);
+  border-radius: 11px;
+  background: rgba(37, 99, 235, 0.035);
+}
+
+.email-options-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+  color: #475569;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.email-options-title svg {
+  color: #2563eb;
+}
+
+.email-contact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.email-contact:hover {
+  background: rgba(37, 99, 235, 0.04);
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-1px);
+}
+
+.email-contact:active {
+  transform: translateY(0);
+}
+
+.email-contact:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+.email-contact-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.email-contact-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.email-contact-content strong {
+  color: #0f172a;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.email-contact-content span {
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   SYSTEM INFO / ABOUT LINK
+   ========================================================= */
+
+.sidebar-system {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 9px 10px;
+
+  border: 1px solid rgba(96, 165, 250, 0.08);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.025);
+
+  color: inherit;
+  text-decoration: none;
+
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.sidebar-system:hover {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(96, 165, 250, 0.18);
+}
+
+.sidebar-system:active {
+  transform: translateY(1px);
+}
+
+.sidebar-system.active {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.sidebar-system:focus-visible {
+  outline: 2px solid #60a5fa;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   SYSTEM TOP
+   ========================================================= */
+
+.sidebar-system-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar-system-top svg {
+  flex-shrink: 0;
+  color: #22c55e;
+}
+
+.sidebar-system-top strong {
+  color: #94a3b8;
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.7px;
+}
+
+/* =========================================================
+   SYSTEM BOTTOM
+   ========================================================= */
+
+.sidebar-system-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  margin-top: 6px;
+}
+
+.sidebar-system-bottom span {
+  color: #475569;
+  font-size: 7px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.sidebar-system-bottom span:last-child {
+  color: #22c55e;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-system:hover .sidebar-system-top strong {
+  color: #cbd5e1;
+}
+
+.sidebar-system:hover .sidebar-system-bottom span:first-child {
+  color: #64748b;
+}
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+:root[data-theme="light"] .sidebar {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  color: #334155;
+  border-right-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .sidebar-brand {
+  border-bottom-color: #e2e8f0;
+}
+
+:root[data-theme="light"] .brand-text strong {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .brand-text span {
+  color: #64748b;
+}
+
+/* STATUS */
+
+:root[data-theme="light"] .sidebar-status-card {
+  background: rgba(37, 99, 235, 0.045);
+  border-color: rgba(96, 165, 250, 0.18);
+}
+
+:root[data-theme="light"] .sidebar-status-icon {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+:root[data-theme="light"] .sidebar-status-info strong {
+  color: #334155;
+}
+
+:root[data-theme="light"] .sidebar-status-info span {
+  color: #64748b;
+}
+
+/* SECTION */
+
+:root[data-theme="light"] .sidebar-section-title {
+  color: #64748b;
+}
+
+/* ROOT MENU */
+
+:root[data-theme="light"] .sidebar-link,
+:root[data-theme="light"] .sidebar-parent-link {
+  color: #475569;
+}
+
+:root[data-theme="light"] .sidebar-link:hover,
+:root[data-theme="light"] .sidebar-parent-link:hover {
+  background: rgba(37, 99, 235, 0.055);
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .sidebar-link.active,
+:root[data-theme="light"] .sidebar-parent-link.active {
+  color: #ffffff;
+}
+
+/* CHEVRON */
+
+:root[data-theme="light"] .sidebar-chevron {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .sidebar-parent-link:hover .sidebar-chevron {
+  color: #334155;
+}
+
+/* SUBMENU */
+
+:root[data-theme="light"] .sidebar-submenu-link {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .sidebar-submenu-link:hover {
+  background: rgba(37, 99, 235, 0.045);
+  color: #334155;
+}
+
+:root[data-theme="light"] .sidebar-submenu-link.active {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+:root[data-theme="light"] .sidebar-submenu-icon {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .sidebar-submenu-link:hover .sidebar-submenu-icon {
+  color: #475569;
+}
+
+:root[data-theme="light"] .sidebar-submenu-link.active .sidebar-submenu-icon {
+  color: #2563eb;
+}
+
+/* NESTED */
+
+:root[data-theme="light"] .sidebar-nested-parent:hover {
+  background: rgba(37, 99, 235, 0.045);
+  color: #334155;
+}
+
+:root[data-theme="light"] .sidebar-nested-parent.active {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+/* SUPPORT */
+
+:root[data-theme="light"] .sidebar-help {
+  background: rgba(37, 99, 235, 0.045);
+  border-color: rgba(96, 165, 250, 0.18);
+  color: #475569;
+}
+
+:root[data-theme="light"] .sidebar-help:hover {
+  background: rgba(37, 99, 235, 0.09);
+  border-color: rgba(96, 165, 250, 0.3);
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .sidebar-help strong {
+  color: #334155;
+}
+
+:root[data-theme="light"] .sidebar-help span {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .sidebar-help:hover strong {
+  color: #0f172a;
+}
+
+:root[data-theme="light"] .sidebar-help:hover span {
+  color: #475569;
+}
+
+/* BOTTOM */
+
+:root[data-theme="light"] .sidebar-bottom {
+  border-top-color: #e2e8f0;
+}
+
+/* SYSTEM */
+
+:root[data-theme="light"] .sidebar-system {
+  background: rgba(37, 99, 235, 0.025);
+  border-color: rgba(96, 165, 250, 0.15);
+}
+
+:root[data-theme="light"] .sidebar-system:hover {
+  background: rgba(37, 99, 235, 0.07);
+  border-color: rgba(96, 165, 250, 0.25);
+}
+
+:root[data-theme="light"] .sidebar-system.active {
+  background: rgba(37, 99, 235, 0.09);
+}
+
+:root[data-theme="light"] .sidebar-system-top strong {
+  color: #475569;
+}
+
+:root[data-theme="light"] .sidebar-system-bottom span {
+  color: #64748b;
+}
+
+:root[data-theme="light"] .sidebar-system:hover .sidebar-system-top strong {
+  color: #0f172a;
+}
+
+/* SCROLLBAR */
+
+:root[data-theme="light"] .sidebar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+:root[data-theme="light"] .sidebar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* =========================================================
+   DARK THEME
+   Mempertahankan tampilan Sidebar existing
+   ========================================================= */
+
+:root[data-theme="dark"] .sidebar {
+  background: linear-gradient(180deg, #0f172a 0%, #111c32 100%);
+  color: #cbd5e1;
+  border-right-color: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="dark"] .sidebar-brand {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .brand-text strong {
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .brand-text span {
+  color: #64748b;
+}

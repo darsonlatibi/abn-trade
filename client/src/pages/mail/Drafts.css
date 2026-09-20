@@ -1,0 +1,764 @@
+/* =========================================================
+   ABN FLEET SYSTEM
+   DRAFTS PAGE
+   THEME AWARE — LIGHT / DARK
+   ========================================================= */
+
+.drafts-page {
+  --drafts-bg: var(--bg-primary, var(--background, #f5f7fb));
+  --drafts-surface: var(--bg-secondary, var(--surface, #ffffff));
+  --drafts-surface-2: var(--card-bg, #ffffff);
+  --drafts-border: var(--border-color, #e5e7eb);
+  --drafts-text: var(--text-primary, #111827);
+  --drafts-text-secondary: var(--text-secondary, #6b7280);
+  --drafts-hover: var(--hover-bg, #f8fafc);
+  --drafts-primary: var(--primary-color, #2563eb);
+  --drafts-danger: #dc2626;
+
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+
+  color: var(--drafts-text);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.drafts-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.drafts-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drafts-title-row svg {
+  color: var(--drafts-primary);
+  flex: 0 0 auto;
+}
+
+.drafts-title-row h1 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.drafts-header p {
+  margin: 7px 0 0;
+
+  color: var(--drafts-text-secondary);
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   COUNT
+   ========================================================= */
+
+.drafts-count {
+  min-width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 7px;
+
+  border: 1px solid
+    color-mix(in srgb, var(--drafts-primary) 20%, var(--drafts-border));
+
+  border-radius: 999px;
+
+  background: color-mix(in srgb, var(--drafts-primary) 10%, transparent);
+
+  color: var(--drafts-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.drafts-card {
+  min-height: 650px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--drafts-surface);
+
+  border: 1px solid var(--drafts-border);
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.drafts-toolbar {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 0 16px;
+
+  border-bottom: 1px solid var(--drafts-border);
+}
+
+.drafts-toolbar-left {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.drafts-tool-button {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--drafts-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.drafts-tool-button:hover {
+  background: var(--drafts-hover);
+  color: var(--drafts-text);
+}
+
+.drafts-tool-button:focus-visible {
+  outline: 2px solid var(--drafts-primary);
+  outline-offset: 2px;
+}
+
+.drafts-tool-button.danger:hover {
+  color: var(--drafts-danger);
+
+  background: color-mix(in srgb, var(--drafts-danger) 8%, transparent);
+}
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.drafts-checkbox {
+  position: relative;
+
+  width: 18px;
+  height: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  cursor: pointer;
+}
+
+.drafts-checkbox input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.drafts-checkbox span {
+  width: 15px;
+  height: 15px;
+
+  display: block;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--drafts-border);
+  border-radius: 4px;
+
+  background: var(--drafts-surface-2);
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.drafts-checkbox input:checked + span {
+  border-color: var(--drafts-primary);
+
+  background: var(--drafts-primary);
+
+  box-shadow: inset 0 0 0 3px var(--drafts-surface-2);
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.drafts-search {
+  width: min(300px, 40%);
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 11px;
+
+  box-sizing: border-box;
+
+  border: 1px solid var(--drafts-border);
+  border-radius: 8px;
+
+  background: var(--drafts-bg);
+
+  color: var(--drafts-text-secondary);
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.drafts-search:focus-within {
+  border-color: var(--drafts-primary);
+
+  box-shadow: 0 0 0 2px
+    color-mix(in srgb, var(--drafts-primary) 10%, transparent);
+}
+
+.drafts-search input {
+  width: 100%;
+
+  min-width: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--drafts-text);
+
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.drafts-search input::placeholder {
+  color: var(--drafts-text-secondary);
+}
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.drafts-list {
+  flex: 1;
+
+  min-width: 0;
+
+  background: var(--drafts-surface);
+}
+
+/* =========================================================
+   DRAFT MESSAGE
+   ========================================================= */
+
+.draft-message {
+  min-height: 62px;
+
+  display: grid;
+
+  grid-template-columns:
+    28px
+    28px
+    180px
+    minmax(0, 1fr)
+    24px
+    70px
+    28px
+    28px;
+
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 0 14px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid var(--drafts-border);
+
+  background: var(--drafts-surface);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.draft-message:hover {
+  background: var(--drafts-hover);
+}
+
+/* =========================================================
+   RECIPIENT
+   ========================================================= */
+
+.draft-recipient {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--drafts-text);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.draft-no-recipient {
+  color: var(--drafts-text-secondary);
+
+  font-style: italic;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.draft-content {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--drafts-text-secondary);
+
+  font-size: 12px;
+}
+
+.draft-content strong {
+  color: var(--drafts-text);
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   STAR / MORE / DELETE
+   ========================================================= */
+
+.draft-star,
+.draft-more,
+.draft-delete {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--drafts-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.draft-star:hover,
+.draft-more:hover {
+  background: var(--drafts-hover);
+  color: var(--drafts-text);
+}
+
+.draft-star:focus-visible,
+.draft-more:focus-visible,
+.draft-delete:focus-visible {
+  outline: 2px solid var(--drafts-primary);
+  outline-offset: 2px;
+}
+
+.draft-star.active {
+  color: #eab308;
+}
+
+/* =========================================================
+   ATTACHMENT
+   ========================================================= */
+
+.draft-attachment {
+  color: var(--drafts-text-secondary);
+
+  flex: 0 0 auto;
+}
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.draft-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  gap: 2px;
+
+  color: var(--drafts-text-secondary);
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+.draft-date small {
+  font-size: 10px;
+}
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.draft-delete {
+  color: var(--drafts-text-secondary);
+}
+
+.draft-delete:hover {
+  background: color-mix(in srgb, var(--drafts-danger) 8%, transparent);
+
+  color: var(--drafts-danger);
+}
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.drafts-empty {
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  color: var(--drafts-text-secondary);
+}
+
+.drafts-empty svg {
+  margin-bottom: 12px;
+
+  opacity: 0.5;
+}
+
+.drafts-empty h3 {
+  margin: 0 0 6px;
+
+  color: var(--drafts-text);
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.drafts-empty p {
+  margin: 0;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.drafts-footer {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  box-sizing: border-box;
+
+  border-top: 1px solid var(--drafts-border);
+
+  color: var(--drafts-text-secondary);
+
+  font-size: 11px;
+}
+
+.drafts-pagination {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.drafts-pagination button {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--drafts-border);
+  border-radius: 7px;
+
+  background: var(--drafts-surface);
+
+  color: var(--drafts-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.drafts-pagination button:hover:not(:disabled) {
+  background: var(--drafts-hover);
+  color: var(--drafts-text);
+
+  border-color: color-mix(
+    in srgb,
+    var(--drafts-border) 70%,
+    var(--drafts-text-secondary)
+  );
+}
+
+.drafts-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+.drafts-pagination span {
+  min-width: 45px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .drafts-page,
+.dark .drafts-page {
+  --drafts-bg: var(--bg-primary, #0f172a);
+  --drafts-surface: var(--bg-secondary, #111827);
+  --drafts-surface-2: var(--card-bg, #1f2937);
+  --drafts-border: var(--border-color, #334155);
+  --drafts-text: var(--text-primary, #f1f5f9);
+  --drafts-text-secondary: var(--text-secondary, #94a3b8);
+  --drafts-hover: var(--hover-bg, #1e293b);
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+  .draft-message {
+    grid-template-columns:
+      28px
+      28px
+      minmax(120px, 0.35fr)
+      minmax(0, 1fr)
+      24px
+      60px
+      28px
+      28px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .drafts-page {
+    padding: 16px;
+  }
+
+  .drafts-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+
+    padding: 12px;
+  }
+
+  .drafts-search {
+    width: 100%;
+  }
+
+  .draft-message {
+    grid-template-columns:
+      24px
+      24px
+      minmax(0, 1fr)
+      24px
+      28px
+      28px;
+
+    min-height: 74px;
+
+    padding: 8px 10px;
+  }
+
+  .draft-recipient {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .draft-content {
+    grid-column: 3 / 4;
+    grid-row: 2;
+  }
+
+  .draft-attachment {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+
+  .draft-date {
+    display: none;
+  }
+
+  .draft-more {
+    grid-column: 5;
+    grid-row: 1 / span 2;
+  }
+
+  .draft-delete {
+    grid-column: 6;
+    grid-row: 1 / span 2;
+  }
+
+  .drafts-footer {
+    padding: 0 10px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .drafts-page {
+    padding: 12px;
+  }
+
+  .drafts-title-row {
+    gap: 8px;
+  }
+
+  .drafts-title-row h1 {
+    font-size: 19px;
+  }
+
+  .drafts-header p {
+    font-size: 11px;
+  }
+
+  .drafts-count {
+    min-width: 20px;
+    height: 20px;
+
+    padding: 0 6px;
+
+    font-size: 10px;
+  }
+
+  .draft-message {
+    grid-template-columns:
+      22px
+      22px
+      minmax(0, 1fr)
+      24px
+      28px;
+  }
+
+  .draft-attachment {
+    display: none;
+  }
+
+  .draft-more {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+
+  .draft-delete {
+    grid-column: 5;
+    grid-row: 1 / span 2;
+  }
+
+  .drafts-footer {
+    min-height: 50px;
+
+    font-size: 10px;
+  }
+}

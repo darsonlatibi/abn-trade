@@ -1,0 +1,810 @@
+/* =========================================================
+   ABN FLEET
+   APPLICATION HEADER
+   LIGHT / DARK THEME
+   ========================================================= */
+
+/* =========================================================
+   THEME VARIABLES
+   ========================================================= */
+
+:root {
+  --header-bg: #ffffff;
+  --header-surface: #ffffff;
+  --header-text: #0f172a;
+  --header-text-strong: #334155;
+  --header-muted: #64748b;
+  --header-subtle: #94a3b8;
+  --header-border: #e2e8f0;
+  --header-hover: #f8fafc;
+  --header-active-bg: #eff6ff;
+  --header-primary: #2563eb;
+  --header-primary-border: #dbeafe;
+
+  --header-green-bg: #f0fdf4;
+  --header-green: #16a34a;
+  --header-green-strong: #15803d;
+
+  --header-danger-bg: #fef2f2;
+  --header-danger-border: #fecaca;
+  --header-danger: #dc2626;
+
+  --header-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+
+  --header-transition:
+    background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+  --header-bg: #0f172a;
+  --header-surface: #111827;
+  --header-text: #f8fafc;
+  --header-text-strong: #e2e8f0;
+  --header-muted: #94a3b8;
+  --header-subtle: #64748b;
+  --header-border: #334155;
+  --header-hover: #1e293b;
+  --header-active-bg: rgba(37, 99, 235, 0.16);
+  --header-primary: #60a5fa;
+  --header-primary-border: rgba(96, 165, 250, 0.25);
+
+  --header-green-bg: rgba(34, 197, 94, 0.1);
+  --header-green: #4ade80;
+  --header-green-strong: #4ade80;
+
+  --header-danger-bg: rgba(239, 68, 68, 0.1);
+  --header-danger-border: rgba(248, 113, 113, 0.25);
+  --header-danger: #f87171;
+
+  --header-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+  width: 100%;
+  height: 68px;
+  min-height: 68px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 24px;
+
+  background: var(--header-bg);
+  color: var(--header-text);
+
+  border-bottom: 1px solid var(--header-border);
+
+  box-sizing: border-box;
+
+  position: relative;
+  z-index: 100;
+
+  box-shadow: var(--header-shadow);
+
+  transition: var(--header-transition);
+}
+
+/* =========================================================
+   LEFT
+   ========================================================= */
+
+.header-left {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+  gap: 10px;
+}
+
+/* =========================================================
+   MENU
+   ========================================================= */
+
+.header-menu-button {
+  width: 36px;
+  height: 36px;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 1px solid var(--header-border);
+  border-radius: 8px;
+
+  background: var(--header-surface);
+  color: var(--header-muted);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.header-menu-button:hover {
+  background: var(--header-hover);
+  border-color: var(--header-primary-border);
+  color: var(--header-primary);
+}
+
+.header-menu-button:active {
+  transform: scale(0.96);
+}
+
+/* =========================================================
+   QUICK NAVIGATION
+   ========================================================= */
+
+.header-nav {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+  margin-left: 2px;
+  padding-right: 10px;
+
+  border-right: 1px solid var(--header-border);
+}
+
+.header-nav-link {
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 11px;
+
+  border-radius: 8px;
+
+  color: var(--header-muted);
+
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.header-nav-link svg {
+  flex-shrink: 0;
+}
+
+.header-nav-link:hover {
+  background: var(--header-hover);
+  color: var(--header-primary);
+}
+
+.header-nav-link.active {
+  background: var(--header-active-bg);
+  color: var(--header-primary);
+}
+
+.header-nav-link.active:hover {
+  background: var(--header-active-bg);
+  color: var(--header-primary);
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.header-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+  margin-left: 2px;
+}
+
+.header-brand-mark {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: var(--header-active-bg);
+  border: 1px solid var(--header-primary-border);
+
+  color: var(--header-primary);
+}
+
+.header-brand-mark svg {
+  display: block;
+}
+
+.header-brand-text {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.header-brand-text span {
+  color: var(--header-muted);
+
+  font-size: 8px;
+  font-weight: 800;
+
+  line-height: 1;
+  letter-spacing: 1.4px;
+
+  white-space: nowrap;
+}
+
+.header-brand-text strong {
+  margin-top: 5px;
+
+  color: var(--header-text);
+
+  font-size: 17px;
+  font-weight: 800;
+
+  line-height: 1;
+  letter-spacing: 0.2px;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RIGHT
+   ========================================================= */
+
+.header-right {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   SERVER
+   ========================================================= */
+
+.header-server {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding-right: 14px;
+
+  border-right: 1px solid var(--header-border);
+}
+
+.header-server-icon {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 8px;
+
+  background: var(--header-green-bg);
+  color: var(--header-green);
+}
+
+.header-server-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.header-server-top {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.header-server-top strong {
+  color: var(--header-green-strong);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.header-server-info > span {
+  color: var(--header-subtle);
+
+  font-size: 8px;
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.header-status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   REALTIME
+   ========================================================= */
+
+.header-connection {
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  padding: 0 10px;
+
+  border: 1px solid var(--header-border);
+  border-radius: 8px;
+
+  background: var(--header-surface);
+  color: var(--header-muted);
+
+  box-sizing: border-box;
+
+  transition: var(--header-transition);
+}
+
+.header-connection svg {
+  color: var(--header-primary);
+  flex-shrink: 0;
+}
+
+.header-connection span {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+
+  white-space: nowrap;
+}
+
+.header-connection i {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   ICON BUTTON
+   ========================================================= */
+
+.header-icon-button {
+  position: relative;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 1px solid var(--header-border);
+  border-radius: 8px;
+
+  background: var(--header-surface);
+  color: var(--header-muted);
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.header-icon-button:hover {
+  background: var(--header-hover);
+  border-color: var(--header-primary-border);
+  color: var(--header-primary);
+}
+
+.header-icon-button:active {
+  transform: translateY(1px);
+}
+
+/* =========================================================
+   THEME BUTTON
+   ========================================================= */
+
+.theme-button {
+  color: var(--header-primary);
+}
+
+.theme-button:hover {
+  background: var(--header-active-bg);
+}
+
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
+
+.notification-badge {
+  position: absolute;
+
+  top: -4px;
+  right: -4px;
+
+  min-width: 16px;
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 3px;
+
+  border: 2px solid var(--header-bg);
+  border-radius: 10px;
+
+  background: #ef4444;
+  color: #ffffff;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+/* =========================================================
+   USER
+   ========================================================= */
+
+.header-user {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-left: 2px;
+  padding-left: 4px;
+}
+
+.header-user-avatar {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: var(--header-hover);
+  color: var(--header-muted);
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.header-user-info strong {
+  color: var(--header-text-strong);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+.header-user-info span {
+  color: var(--header-subtle);
+
+  font-size: 8px;
+
+  line-height: 1;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+.header-logout-button {
+  height: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  flex-shrink: 0;
+
+  padding: 0 12px;
+
+  border: 1px solid var(--header-border);
+  border-radius: 8px;
+
+  background: var(--header-surface);
+  color: var(--header-muted);
+
+  cursor: pointer;
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  line-height: 1;
+
+  white-space: nowrap;
+
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.header-logout-button svg {
+  flex-shrink: 0;
+}
+
+.header-logout-button:hover {
+  background: var(--header-danger-bg);
+  border-color: var(--header-danger-border);
+  color: var(--header-danger);
+}
+
+.header-logout-button:active {
+  transform: translateY(1px);
+}
+
+.header-logout-button:focus-visible {
+  outline: 2px solid var(--header-primary);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.header-menu-button:focus-visible,
+.header-nav-link:focus-visible,
+.header-icon-button:focus-visible {
+  outline: 2px solid var(--header-primary);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .app-header {
+    padding: 0 18px;
+  }
+
+  .header-server-info {
+    display: none;
+  }
+
+  .header-server {
+    padding-right: 10px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .app-header {
+    height: 64px;
+    min-height: 64px;
+
+    padding: 0 15px;
+  }
+
+  .header-menu-button {
+    display: flex;
+  }
+
+  .header-left {
+    gap: 8px;
+  }
+
+  .header-nav {
+    gap: 2px;
+    padding-right: 8px;
+  }
+
+  .header-nav-link {
+    height: 34px;
+    padding: 0 8px;
+  }
+
+  .header-nav-link span {
+    display: none;
+  }
+
+  .header-brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-brand-text strong {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+  .header-server {
+    display: none;
+  }
+
+  .header-connection {
+    width: 34px;
+
+    padding: 0;
+
+    justify-content: center;
+  }
+
+  .header-connection span {
+    display: none;
+  }
+
+  .header-user-info {
+    display: none;
+  }
+
+  .header-right {
+    gap: 7px;
+  }
+
+  .header-brand-text span {
+    display: none;
+  }
+}
+
+/* =========================================================
+   VERY SMALL
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .app-header {
+    padding: 0 10px;
+  }
+
+  .header-brand {
+    gap: 7px;
+  }
+
+  .header-brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .header-brand-text strong {
+    font-size: 13px;
+  }
+
+  .header-menu-button,
+  .header-icon-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .header-connection {
+    width: 34px;
+    height: 34px;
+  }
+
+  .header-user-avatar {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* =========================================================
+   EXTRA SMALL
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .header-nav {
+    display: none;
+  }
+
+  .header-brand-text strong {
+    font-size: 12px;
+  }
+
+  .header-menu-button,
+  .header-icon-button,
+  .header-connection {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-header,
+  .header-menu-button,
+  .header-nav-link,
+  .header-icon-button,
+  .header-connection,
+  .header-logout-button {
+    transition: none;
+  }
+}

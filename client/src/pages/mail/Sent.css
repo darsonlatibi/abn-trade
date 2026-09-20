@@ -1,0 +1,678 @@
+/* =========================================================
+   ABN FLEET SYSTEM
+   MAIL — SENT
+   THEME AWARE — LIGHT / DARK
+   ========================================================= */
+
+.sent-page {
+  --sent-bg: var(--bg-primary, var(--background, #f5f7fb));
+  --sent-surface: var(--bg-secondary, var(--surface, #ffffff));
+  --sent-surface-2: var(--card-bg, #ffffff);
+
+  --sent-border: var(--border-color, #e5e7eb);
+
+  --sent-text: var(--text-primary, #111827);
+  --sent-text-secondary: var(--text-secondary, #6b7280);
+
+  --sent-hover: var(--hover-bg, #f8fafc);
+
+  --sent-primary: var(--primary-color, #2563eb);
+  --sent-danger: #dc2626;
+
+  width: 100%;
+  min-height: 100%;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  color: var(--sent-text);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.sent-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.sent-title-row {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+}
+
+.sent-title-row svg {
+  color: var(--sent-primary);
+}
+
+.sent-title-row h1 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+}
+
+.sent-header p {
+  margin: 7px 0 0;
+
+  color: var(--sent-text-secondary);
+
+  font-size: 13px;
+}
+
+.sent-count {
+  min-width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 7px;
+
+  border-radius: 999px;
+
+  background: color-mix(in srgb, var(--sent-primary) 10%, transparent);
+
+  color: var(--sent-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.sent-card {
+  min-height: 650px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--sent-surface);
+
+  border: 1px solid var(--sent-border);
+
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.sent-toolbar {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 0 16px;
+
+  border-bottom: 1px solid var(--sent-border);
+}
+
+.sent-toolbar-left {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.sent-tool-button {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--sent-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sent-tool-button:hover {
+  background: var(--sent-hover);
+  color: var(--sent-text);
+}
+
+.sent-tool-button.danger:hover {
+  background: color-mix(in srgb, var(--sent-danger) 8%, transparent);
+
+  color: var(--sent-danger);
+}
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.sent-checkbox {
+  position: relative;
+
+  width: 18px;
+  height: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  cursor: pointer;
+}
+
+.sent-checkbox input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.sent-checkbox span {
+  width: 15px;
+  height: 15px;
+
+  border: 1px solid var(--sent-border);
+
+  border-radius: 4px;
+
+  background: var(--sent-surface-2);
+
+  box-sizing: border-box;
+}
+
+.sent-checkbox input:checked + span {
+  border-color: var(--sent-primary);
+
+  background: var(--sent-primary);
+
+  box-shadow: inset 0 0 0 3px var(--sent-surface-2);
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.sent-search {
+  width: min(300px, 40%);
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--sent-border);
+
+  border-radius: 8px;
+
+  background: var(--sent-bg);
+
+  color: var(--sent-text-secondary);
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.sent-search:focus-within {
+  border-color: var(--sent-primary);
+
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--sent-primary) 10%, transparent);
+}
+
+.sent-search input {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--sent-text);
+
+  font-size: 12px;
+}
+
+.sent-search input::placeholder {
+  color: var(--sent-text-secondary);
+}
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.sent-list {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.sent-message {
+  min-height: 62px;
+
+  display: grid;
+
+  grid-template-columns:
+    28px
+    28px
+    180px
+    minmax(0, 1fr)
+    24px
+    70px
+    30px;
+
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid var(--sent-border);
+
+  background: var(--sent-surface);
+
+  cursor: pointer;
+
+  transition: background 0.15s ease;
+}
+
+.sent-message:hover {
+  background: var(--sent-hover);
+}
+
+/* =========================================================
+   RECIPIENT
+   ========================================================= */
+
+.sent-recipient {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--sent-text);
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.sent-content {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--sent-text-secondary);
+
+  font-size: 12px;
+}
+
+.sent-content strong {
+  color: var(--sent-text);
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   STAR / MORE
+   ========================================================= */
+
+.sent-star,
+.sent-more {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--sent-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sent-star:hover,
+.sent-more:hover {
+  background: var(--sent-hover);
+
+  color: var(--sent-text);
+}
+
+.sent-star.active {
+  color: #eab308;
+}
+
+/* =========================================================
+   ATTACHMENT
+   ========================================================= */
+
+.sent-attachment {
+  color: var(--sent-text-secondary);
+}
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.sent-date {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 2px;
+
+  color: var(--sent-text-secondary);
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+.sent-date small {
+  font-size: 10px;
+}
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.sent-empty {
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: var(--sent-text-secondary);
+}
+
+.sent-empty svg {
+  margin-bottom: 12px;
+
+  opacity: 0.5;
+}
+
+.sent-empty h3 {
+  margin: 0 0 6px;
+
+  color: var(--sent-text);
+
+  font-size: 15px;
+}
+
+.sent-empty p {
+  margin: 0;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.sent-footer {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  border-top: 1px solid var(--sent-border);
+
+  color: var(--sent-text-secondary);
+
+  font-size: 11px;
+}
+
+.sent-pagination {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.sent-pagination button {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--sent-border);
+
+  border-radius: 7px;
+
+  background: var(--sent-surface);
+
+  color: var(--sent-text-secondary);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.sent-pagination button:hover:not(:disabled) {
+  background: var(--sent-hover);
+
+  color: var(--sent-text);
+}
+
+.sent-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+.sent-pagination span {
+  min-width: 45px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .sent-page,
+.dark .sent-page {
+  --sent-bg: var(--bg-primary, #0f172a);
+
+  --sent-surface: var(--bg-secondary, #111827);
+
+  --sent-surface-2: var(--card-bg, #1f2937);
+
+  --sent-border: var(--border-color, #334155);
+
+  --sent-text: var(--text-primary, #f1f5f9);
+
+  --sent-text-secondary: var(--text-secondary, #94a3b8);
+
+  --sent-hover: var(--hover-bg, #1e293b);
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .sent-message {
+    grid-template-columns:
+      28px
+      28px
+      minmax(120px, 0.35fr)
+      minmax(0, 1fr)
+      24px
+      60px
+      30px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .sent-page {
+    padding: 16px;
+  }
+
+  .sent-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    padding: 12px;
+  }
+
+  .sent-search {
+    width: 100%;
+  }
+
+  .sent-message {
+    min-height: 72px;
+
+    grid-template-columns:
+      24px
+      24px
+      minmax(0, 1fr)
+      24px
+      30px;
+
+    padding: 8px 10px;
+  }
+
+  .sent-recipient {
+    grid-column: 3;
+
+    grid-row: 1;
+  }
+
+  .sent-content {
+    grid-column: 3 / 4;
+
+    grid-row: 2;
+  }
+
+  .sent-attachment {
+    grid-column: 4;
+
+    grid-row: 1 / span 2;
+  }
+
+  .sent-date {
+    display: none;
+  }
+
+  .sent-more {
+    grid-column: 5;
+
+    grid-row: 1 / span 2;
+  }
+
+  .sent-footer {
+    padding: 0 10px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .sent-page {
+    padding: 12px;
+  }
+
+  .sent-title-row h1 {
+    font-size: 19px;
+  }
+
+  .sent-header p {
+    font-size: 11px;
+  }
+
+  .sent-message {
+    grid-template-columns:
+      22px
+      22px
+      minmax(0, 1fr)
+      26px
+      28px;
+  }
+
+  .sent-attachment {
+    display: none;
+  }
+
+  .sent-more {
+    grid-column: 5;
+  }
+
+  .sent-footer {
+    font-size: 10px;
+  }
+}

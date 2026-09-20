@@ -1,0 +1,710 @@
+.trash-page {
+  --trash-bg: var(--bg-primary, var(--background, #f5f7fb));
+  --trash-surface: var(--bg-secondary, var(--surface, #ffffff));
+  --trash-surface-2: var(--card-bg, #ffffff);
+  --trash-border: var(--border-color, #e5e7eb);
+  --trash-text: var(--text-primary, #111827);
+  --trash-text-secondary: var(--text-secondary, #6b7280);
+  --trash-hover: var(--hover-bg, #f8fafc);
+  --trash-primary: var(--primary-color, #2563eb);
+  --trash-danger: #dc2626;
+  --trash-warning: #d97706;
+
+  width: 100%;
+  min-height: 100%;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  color: var(--trash-text);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.trash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.trash-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.trash-title-row svg {
+  color: var(--trash-danger);
+}
+
+.trash-title-row h1 {
+  margin: 0;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+}
+
+.trash-header p {
+  margin: 7px 0 0;
+
+  color: var(--trash-text-secondary);
+
+  font-size: 13px;
+}
+
+.trash-count {
+  min-width: 22px;
+  height: 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 7px;
+
+  border-radius: 999px;
+
+  background: color-mix(in srgb, var(--trash-danger) 10%, transparent);
+
+  color: var(--trash-danger);
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   WARNING
+   ========================================================= */
+
+.trash-warning {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 16px;
+
+  padding: 10px 13px;
+
+  border: 1px solid
+    color-mix(in srgb, var(--trash-warning) 25%, var(--trash-border));
+
+  border-radius: 8px;
+
+  background: color-mix(in srgb, var(--trash-warning) 7%, var(--trash-surface));
+
+  color: var(--trash-warning);
+
+  font-size: 12px;
+}
+
+.trash-warning span {
+  color: var(--trash-text-secondary);
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.trash-card {
+  min-height: 650px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: var(--trash-surface);
+
+  border: 1px solid var(--trash-border);
+  border-radius: 12px;
+
+  overflow: hidden;
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.trash-toolbar {
+  min-height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 0 16px;
+
+  border-bottom: 1px solid var(--trash-border);
+}
+
+.trash-toolbar-left {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.trash-tool-button {
+  width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--trash-text-secondary);
+
+  cursor: pointer;
+}
+
+.trash-tool-button:hover {
+  background: var(--trash-hover);
+
+  color: var(--trash-text);
+}
+
+.trash-tool-button.restore:hover {
+  color: var(--trash-primary);
+}
+
+.trash-tool-button.danger:hover {
+  color: var(--trash-danger);
+}
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.trash-checkbox {
+  position: relative;
+
+  width: 18px;
+  height: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  cursor: pointer;
+}
+
+.trash-checkbox input {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+.trash-checkbox span {
+  width: 15px;
+  height: 15px;
+
+  border: 1px solid var(--trash-border);
+  border-radius: 4px;
+
+  background: var(--trash-surface-2);
+
+  box-sizing: border-box;
+}
+
+.trash-checkbox input:checked + span {
+  border-color: var(--trash-primary);
+
+  background: var(--trash-primary);
+
+  box-shadow: inset 0 0 0 3px var(--trash-surface-2);
+}
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.trash-search {
+  width: min(300px, 40%);
+
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0 11px;
+
+  border: 1px solid var(--trash-border);
+  border-radius: 8px;
+
+  background: var(--trash-bg);
+
+  color: var(--trash-text-secondary);
+
+  box-sizing: border-box;
+}
+
+.trash-search:focus-within {
+  border-color: var(--trash-primary);
+}
+
+.trash-search input {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: var(--trash-text);
+
+  font-size: 12px;
+}
+
+.trash-search input::placeholder {
+  color: var(--trash-text-secondary);
+}
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.trash-list {
+  flex: 1;
+  min-width: 0;
+}
+
+.trash-message {
+  min-height: 62px;
+
+  display: grid;
+
+  grid-template-columns:
+    28px
+    28px
+    180px
+    minmax(0, 1fr)
+    24px
+    70px
+    30px
+    30px
+    30px;
+
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 0 14px;
+
+  border-bottom: 1px solid var(--trash-border);
+
+  background: var(--trash-surface);
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    opacity 0.15s ease;
+}
+
+.trash-message:hover {
+  background: var(--trash-hover);
+}
+
+/* =========================================================
+   SENDER
+   ========================================================= */
+
+.trash-sender {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--trash-text);
+
+  font-size: 12px;
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.trash-content {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: var(--trash-text-secondary);
+
+  font-size: 12px;
+}
+
+.trash-content strong {
+  color: var(--trash-text);
+
+  font-weight: 500;
+}
+
+/* =========================================================
+   STAR
+   ========================================================= */
+
+.trash-star,
+.trash-more,
+.trash-restore,
+.trash-delete {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--trash-text-secondary);
+
+  cursor: pointer;
+}
+
+.trash-star:hover,
+.trash-more:hover {
+  background: var(--trash-hover);
+
+  color: var(--trash-text);
+}
+
+.trash-star.active {
+  color: #eab308;
+}
+
+/* =========================================================
+   ATTACHMENT
+   ========================================================= */
+
+.trash-attachment {
+  color: var(--trash-text-secondary);
+}
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.trash-date {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 2px;
+
+  color: var(--trash-text-secondary);
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+.trash-date small {
+  font-size: 10px;
+}
+
+/* =========================================================
+   RESTORE
+   ========================================================= */
+
+.trash-restore:hover {
+  background: color-mix(in srgb, var(--trash-primary) 8%, transparent);
+
+  color: var(--trash-primary);
+}
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.trash-delete:hover {
+  background: color-mix(in srgb, var(--trash-danger) 8%, transparent);
+
+  color: var(--trash-danger);
+}
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.trash-empty {
+  min-height: 420px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  color: var(--trash-text-secondary);
+}
+
+.trash-empty svg {
+  margin-bottom: 12px;
+
+  opacity: 0.45;
+}
+
+.trash-empty h3 {
+  margin: 0 0 6px;
+
+  color: var(--trash-text);
+
+  font-size: 15px;
+}
+
+.trash-empty p {
+  margin: 0;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.trash-footer {
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 16px;
+
+  border-top: 1px solid var(--trash-border);
+
+  color: var(--trash-text-secondary);
+
+  font-size: 11px;
+}
+
+.trash-pagination {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+}
+
+.trash-pagination button {
+  width: 30px;
+  height: 30px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--trash-border);
+  border-radius: 7px;
+
+  background: var(--trash-surface);
+
+  color: var(--trash-text-secondary);
+
+  cursor: pointer;
+}
+
+.trash-pagination button:hover:not(:disabled) {
+  background: var(--trash-hover);
+
+  color: var(--trash-text);
+}
+
+.trash-pagination button:disabled {
+  opacity: 0.4;
+
+  cursor: not-allowed;
+}
+
+.trash-pagination span {
+  min-width: 45px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   DARK MODE
+   ========================================================= */
+
+[data-theme="dark"] .trash-page,
+.dark .trash-page {
+  --trash-bg: var(--bg-primary, #0f172a);
+  --trash-surface: var(--bg-secondary, #111827);
+  --trash-surface-2: var(--card-bg, #1f2937);
+  --trash-border: var(--border-color, #334155);
+  --trash-text: var(--text-primary, #f1f5f9);
+  --trash-text-secondary: var(--text-secondary, #94a3b8);
+  --trash-hover: var(--hover-bg, #1e293b);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .trash-message {
+    grid-template-columns:
+      28px
+      28px
+      minmax(120px, 0.35fr)
+      minmax(0, 1fr)
+      24px
+      60px
+      30px
+      30px
+      30px;
+  }
+}
+
+@media (max-width: 850px) {
+  .trash-page {
+    padding: 16px;
+  }
+
+  .trash-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+
+    padding: 12px;
+  }
+
+  .trash-search {
+    width: 100%;
+  }
+
+  .trash-message {
+    grid-template-columns:
+      24px
+      24px
+      minmax(0, 1fr)
+      24px
+      28px
+      28px
+      28px;
+
+    min-height: 76px;
+
+    padding: 8px 10px;
+  }
+
+  .trash-sender {
+    grid-column: 3;
+  }
+
+  .trash-content {
+    grid-column: 3 / 4;
+    grid-row: 2;
+  }
+
+  .trash-attachment {
+    grid-column: 4;
+    grid-row: 1 / span 2;
+  }
+
+  .trash-date {
+    display: none;
+  }
+
+  .trash-restore {
+    grid-column: 5;
+    grid-row: 1 / span 2;
+  }
+
+  .trash-more {
+    grid-column: 6;
+    grid-row: 1 / span 2;
+  }
+
+  .trash-delete {
+    grid-column: 7;
+    grid-row: 1 / span 2;
+  }
+
+  .trash-footer {
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 520px) {
+  .trash-page {
+    padding: 12px;
+  }
+
+  .trash-title-row h1 {
+    font-size: 19px;
+  }
+
+  .trash-header p {
+    font-size: 11px;
+  }
+
+  .trash-warning {
+    align-items: flex-start;
+
+    font-size: 11px;
+  }
+
+  .trash-message {
+    grid-template-columns:
+      22px
+      22px
+      minmax(0, 1fr)
+      28px
+      28px
+      28px;
+  }
+
+  .trash-attachment {
+    display: none;
+  }
+
+  .trash-restore {
+    grid-column: 4;
+  }
+
+  .trash-more {
+    grid-column: 5;
+  }
+
+  .trash-delete {
+    grid-column: 6;
+  }
+}

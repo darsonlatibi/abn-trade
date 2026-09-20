@@ -1,0 +1,348 @@
+/* =========================================================
+   ABN FLEET
+   APPLICATION LAYOUT
+   GLOBAL THEME + LIGHT / DARK
+   ========================================================= */
+
+/* =========================================================
+   GLOBAL THEME
+   ========================================================= */
+
+:root {
+  /* =======================================================
+     BACKGROUND
+     ======================================================= */
+
+  --bg-app: #f4f7fb;
+  --bg-surface: #ffffff;
+  --bg-surface-soft: #f8fafc;
+
+  /* =======================================================
+     BORDER
+     ======================================================= */
+
+  --border-color: #e2e8f0;
+  --border-color-focus: #bfdbfe;
+
+  /* =======================================================
+     TEXT
+     ======================================================= */
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  /* =======================================================
+     INFO / SUCCESS
+     ======================================================= */
+
+  --text-info: #2563eb;
+  --text-success: #16a34a;
+
+  /* =======================================================
+     ACCENT
+     ======================================================= */
+
+  --accent-soft: #eff6ff;
+  --accent-border: #bfdbfe;
+
+  /* =======================================================
+     STATUS SUCCESS
+     ======================================================= */
+
+  --status-success: #22c55e;
+  --status-success-bg: rgba(34, 197, 94, 0.05);
+  --status-success-border: rgba(34, 197, 94, 0.18);
+  --status-success-ring: rgba(34, 197, 94, 0.1);
+
+  /* =======================================================
+     SHADOW
+     ======================================================= */
+
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.06);
+
+  /* =======================================================
+     OVERLAY
+     ======================================================= */
+
+  --overlay-bg: rgba(15, 23, 42, 0.45);
+
+  /* =======================================================
+     THEME TRANSITION
+     ======================================================= */
+
+  --theme-transition:
+    background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] {
+  /* =======================================================
+     BACKGROUND
+     ======================================================= */
+
+  --bg-app: #0f172a;
+  --bg-surface: #111827;
+  --bg-surface-soft: #1e293b;
+
+  /* =======================================================
+     BORDER
+     ======================================================= */
+
+  --border-color: #334155;
+  --border-color-focus: #3b82f6;
+
+  /* =======================================================
+     TEXT
+     ======================================================= */
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+
+  /* =======================================================
+     INFO / SUCCESS
+     ======================================================= */
+
+  --text-info: #60a5fa;
+  --text-success: #4ade80;
+
+  /* =======================================================
+     ACCENT
+     ======================================================= */
+
+  --accent-soft: rgba(37, 99, 235, 0.14);
+  --accent-border: rgba(59, 130, 246, 0.35);
+
+  /* =======================================================
+     STATUS SUCCESS
+     ======================================================= */
+
+  --status-success: #4ade80;
+  --status-success-bg: rgba(34, 197, 94, 0.08);
+  --status-success-border: rgba(74, 222, 128, 0.22);
+  --status-success-ring: rgba(74, 222, 128, 0.12);
+
+  /* =======================================================
+     SHADOW
+     ======================================================= */
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.28);
+
+  /* =======================================================
+     OVERLAY
+     ======================================================= */
+
+  --overlay-bg: rgba(2, 6, 23, 0.68);
+}
+
+/* =========================================================
+   APPLICATION LAYOUT
+   ========================================================= */
+
+.app-layout {
+  width: 100%;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  display: flex;
+  flex-direction: row;
+
+  background: var(--bg-app);
+  color: var(--text-primary);
+
+  overflow: hidden;
+
+  transition: var(--theme-transition);
+}
+
+/* =========================================================
+   SIDEBAR WRAPPER
+   ========================================================= */
+
+.sidebar-wrapper {
+  width: 245px;
+  min-width: 245px;
+
+  height: 100vh;
+  height: 100dvh;
+
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.app-main {
+  min-width: 0;
+
+  min-height: 100vh;
+  min-height: 100dvh;
+
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background: var(--bg-app);
+  color: var(--text-primary);
+
+  transition: var(--theme-transition);
+}
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.app-content {
+  flex: 1;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  background: var(--bg-app);
+  color: var(--text-primary);
+
+  transition: var(--theme-transition);
+
+  scrollbar-width: thin;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.app-content::-webkit-scrollbar {
+  width: 7px;
+}
+
+.app-content::-webkit-scrollbar-track {
+  background: var(--bg-app);
+}
+
+.app-content::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.app-content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.app-footer {
+  flex-shrink: 0;
+
+  background: var(--bg-surface);
+  color: var(--text-primary);
+
+  border-top-color: var(--border-color);
+
+  transition: var(--theme-transition);
+}
+
+/* =========================================================
+   MOBILE OVERLAY
+   ========================================================= */
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .sidebar-wrapper {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 245px;
+    min-width: 245px;
+
+    height: 100vh;
+    height: 100dvh;
+
+    z-index: 200;
+
+    transform: translateX(-100%);
+
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar-wrapper.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+
+    background: var(--overlay-bg);
+
+    z-index: 150;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 430px) {
+  .sidebar-wrapper {
+    width: 235px;
+    min-width: 235px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .app-layout,
+  .app-main,
+  .app-content,
+  .app-footer,
+  .sidebar-overlay {
+    transition: none;
+  }
+
+  .sidebar-wrapper {
+    transition: none;
+  }
+}

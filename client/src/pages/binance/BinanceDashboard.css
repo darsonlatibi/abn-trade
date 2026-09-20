@@ -1,0 +1,697 @@
+/* =========================================================
+ * BINANCE DASHBOARD
+ * ========================================================= */
+
+.binance-dashboard-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 28px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(59, 130, 246, 0.08),
+      transparent 32%
+    ),
+    #f5f7fb;
+  color: #172033;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+ * HEADER
+ * ========================================================= */
+
+.binance-dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.binance-dashboard-eyebrow,
+.binance-panel-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.binance-dashboard-header h1 {
+  margin: 6px 0 5px;
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.binance-dashboard-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.binance-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.binance-server-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.binance-server-status.online {
+  color: #15803d;
+}
+
+.binance-server-status.offline {
+  color: #dc2626;
+}
+
+.binance-refresh-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid #dbe2ea;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.binance-refresh-button:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.binance-refresh-button:active {
+  transform: scale(0.98);
+}
+
+.spin {
+  animation: binance-spin 0.7s linear infinite;
+}
+
+@keyframes binance-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+ * CONNECTION
+ * ========================================================= */
+
+.binance-connection-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  border: 1px solid #dce4ee;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+}
+
+.binance-connection-left,
+.binance-connection-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.binance-connection-left strong {
+  color: #334155;
+  font-size: 11px;
+}
+
+.binance-connection-right strong {
+  color: #0f172a;
+  font-variant-numeric: tabular-nums;
+}
+
+.binance-connection-divider {
+  color: #cbd5e1;
+}
+
+.binance-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.binance-status-dot.online {
+  background: #22c55e;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+  animation: binance-pulse 1.8s infinite;
+}
+
+.binance-status-dot.offline {
+  background: #ef4444;
+}
+
+@keyframes binance-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* =========================================================
+ * SUMMARY
+ * ========================================================= */
+
+.binance-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.binance-summary-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 94px;
+  padding: 18px;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+}
+
+.binance-summary-icon {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.binance-summary-icon.blue {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.binance-summary-icon.green {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+
+.binance-summary-icon.red {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.binance-summary-icon.gray {
+  background: #f8fafc;
+  color: #64748b;
+}
+
+.binance-summary-card span {
+  display: block;
+  margin-bottom: 4px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.binance-summary-card strong {
+  display: block;
+  color: #0f172a;
+  font-size: 24px;
+  line-height: 1;
+}
+
+/* =========================================================
+ * PANELS
+ * ========================================================= */
+
+.binance-panel,
+.binance-market-overview {
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.035);
+}
+
+.binance-market-overview {
+  margin-bottom: 18px;
+  padding: 20px;
+}
+
+.binance-panel {
+  overflow: hidden;
+}
+
+.binance-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-bottom: 1px solid #edf1f5;
+}
+
+.binance-panel-header.compact {
+  padding-bottom: 16px;
+}
+
+.binance-panel-header h2 {
+  margin: 5px 0 0;
+  color: #172033;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.binance-live-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.binance-live-indicator.online {
+  color: #15803d;
+  background: #f0fdf4;
+}
+
+.binance-live-indicator.offline {
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+.binance-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.binance-live-indicator.online .binance-live-dot {
+  animation: binance-pulse 1.5s infinite;
+}
+
+/* =========================================================
+ * MARKET OVERVIEW
+ * ========================================================= */
+
+.binance-overview-grid {
+  display: grid;
+  grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.binance-overview-main,
+.binance-overview-stat {
+  min-height: 86px;
+  padding: 16px;
+  border: 1px solid #edf1f5;
+  border-radius: 10px;
+  background: #fafbfc;
+}
+
+.binance-overview-main span,
+.binance-overview-stat span {
+  display: block;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.binance-overview-number {
+  margin-bottom: 4px;
+  color: #0f172a;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.binance-overview-stat strong {
+  display: block;
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+/* =========================================================
+ * ASSETS
+ * ========================================================= */
+
+.binance-assets-panel {
+  margin-bottom: 18px;
+}
+
+.binance-feed-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.binance-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.binance-table {
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
+}
+
+.binance-table th {
+  padding: 12px 14px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e5eaf0;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-align: right;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.binance-table th:first-child {
+  text-align: left;
+}
+
+.binance-table td {
+  padding: 13px 14px;
+  border-bottom: 1px solid #f0f3f6;
+  color: #334155;
+  font-size: 12px;
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.binance-table tbody tr {
+  transition: background 0.15s ease;
+}
+
+.binance-table tbody tr:hover {
+  background: #fafcff;
+}
+
+.binance-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.binance-asset {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+}
+
+.binance-asset-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.binance-asset strong {
+  display: block;
+  color: #0f172a;
+  font-size: 12px;
+}
+
+.binance-asset span {
+  display: block;
+  margin-top: 2px;
+  color: #94a3b8;
+  font-size: 9px;
+}
+
+.binance-price {
+  color: #0f172a !important;
+  font-size: 13px !important;
+  font-weight: 800;
+}
+
+.binance-change {
+  font-weight: 800;
+}
+
+.binance-volume {
+  color: #475569;
+}
+
+.binance-time {
+  color: #94a3b8 !important;
+  font-size: 10px !important;
+}
+
+.positive {
+  color: #16a34a !important;
+}
+
+.negative {
+  color: #dc2626 !important;
+}
+
+.neutral {
+  color: #64748b !important;
+}
+
+.binance-empty {
+  height: 180px;
+  text-align: center !important;
+  color: #94a3b8 !important;
+}
+
+.binance-empty svg {
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.binance-empty span {
+  font-size: 12px;
+}
+
+/* =========================================================
+ * LEADERS
+ * ========================================================= */
+
+.binance-leaders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.binance-leader-list {
+  padding: 4px 20px 12px;
+}
+
+.binance-leader-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 1fr auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 50px;
+  border-bottom: 1px solid #f0f3f6;
+  font-size: 12px;
+}
+
+.binance-leader-row:last-child {
+  border-bottom: 0;
+}
+
+.binance-leader-row > span:not(.binance-rank) {
+  color: #64748b;
+  text-align: right;
+}
+
+.binance-leader-row > strong:last-child {
+  text-align: right;
+}
+
+.binance-rank {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.binance-no-data {
+  padding: 30px 0;
+  color: #94a3b8;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* =========================================================
+ * FOOTER
+ * ========================================================= */
+
+.binance-feed-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #e2e8f0;
+}
+
+.binance-feed-footer > div {
+  padding: 14px 16px;
+  background: #ffffff;
+}
+
+.binance-feed-footer span {
+  display: block;
+  margin-bottom: 4px;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.binance-feed-footer strong {
+  color: #334155;
+  font-size: 11px;
+}
+
+/* =========================================================
+ * RESPONSIVE
+ * ========================================================= */
+
+@media (max-width: 1200px) {
+  .binance-summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .binance-overview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .binance-feed-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .binance-dashboard-page {
+    padding: 16px;
+  }
+
+  .binance-dashboard-header {
+    flex-direction: column;
+  }
+
+  .binance-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .binance-connection-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .binance-summary-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .binance-overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .binance-leaders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .binance-feed-footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .binance-dashboard-header h1 {
+    font-size: 24px;
+  }
+
+  .binance-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .binance-header-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .binance-server-status,
+  .binance-refresh-button {
+    justify-content: center;
+  }
+
+  .binance-feed-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+ * REDUCED MOTION
+ * ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .spin,
+  .binance-status-dot.online,
+  .binance-live-indicator.online .binance-live-dot {
+    animation: none;
+  }
+}

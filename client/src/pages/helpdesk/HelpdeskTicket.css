@@ -1,0 +1,1541 @@
+/* =========================================================
+   ABN FLEET SYSTEM
+   HELPDESK TICKET
+   THEME AWARE — LIGHT / DARK
+   ========================================================= */
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.helpdesk-page {
+  --helpdesk-bg: var(--bg-primary, var(--background, #f5f7fb));
+  --helpdesk-surface: var(--bg-secondary, var(--surface, #ffffff));
+  --helpdesk-surface-2: var(--card-bg, #ffffff);
+
+  --helpdesk-border: var(--border-color, #e2e8f0);
+  --helpdesk-border-soft: rgba(148, 163, 184, 0.18);
+
+  --helpdesk-text: var(--text-primary, #0f172a);
+  --helpdesk-text-secondary: var(--text-secondary, #64748b);
+  --helpdesk-text-muted: var(--text-muted, #94a3b8);
+
+  --helpdesk-primary: var(--primary-color, #2563eb);
+  --helpdesk-primary-hover: #1d4ed8;
+  --helpdesk-primary-soft: rgba(37, 99, 235, 0.1);
+
+  --helpdesk-success: #16a34a;
+  --helpdesk-success-soft: rgba(22, 163, 74, 0.1);
+
+  --helpdesk-warning: #d97706;
+  --helpdesk-warning-soft: rgba(217, 119, 6, 0.1);
+
+  --helpdesk-danger: #dc2626;
+  --helpdesk-danger-hover: #b91c1c;
+  --helpdesk-danger-soft: rgba(220, 38, 38, 0.1);
+
+  --helpdesk-info: #0891b2;
+  --helpdesk-info-soft: rgba(8, 145, 178, 0.1);
+
+  --helpdesk-radius-sm: 6px;
+  --helpdesk-radius-md: 10px;
+  --helpdesk-radius-lg: 14px;
+
+  --helpdesk-shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
+
+  --helpdesk-shadow-md: 0 8px 24px rgba(15, 23, 42, 0.06);
+
+  --helpdesk-transition:
+    background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease,
+    box-shadow 0.18s ease, transform 0.18s ease;
+
+  width: 100%;
+  min-height: 100%;
+  padding: 24px;
+  background: var(--helpdesk-bg);
+  color: var(--helpdesk-text);
+  box-sizing: border-box;
+}
+
+.helpdesk-page *,
+.helpdesk-page *::before,
+.helpdesk-page *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.helpdesk-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.helpdesk-title {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+}
+
+.helpdesk-title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  flex: 0 0 46px;
+
+  border-radius: 12px;
+
+  color: var(--helpdesk-primary);
+  background: var(--helpdesk-primary-soft);
+
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.helpdesk-title h1 {
+  margin: 0;
+
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-title p {
+  margin: 4px 0 0;
+
+  font-size: 13px;
+  line-height: 1.5;
+
+  color: var(--helpdesk-text-secondary);
+}
+
+.helpdesk-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.helpdesk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 38px;
+  padding: 0 14px;
+
+  border: 1px solid transparent;
+  border-radius: var(--helpdesk-radius-sm);
+
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--helpdesk-transition);
+
+  white-space: nowrap;
+}
+
+.helpdesk-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.helpdesk-btn-primary {
+  color: #ffffff;
+  background: var(--helpdesk-primary);
+  border-color: var(--helpdesk-primary);
+}
+
+.helpdesk-btn-primary:hover:not(:disabled) {
+  background: var(--helpdesk-primary-hover);
+  border-color: var(--helpdesk-primary-hover);
+}
+
+.helpdesk-btn-secondary {
+  color: var(--helpdesk-text);
+  background: var(--helpdesk-surface);
+  border-color: var(--helpdesk-border);
+}
+
+.helpdesk-btn-secondary:hover:not(:disabled) {
+  background: var(--helpdesk-primary-soft);
+  border-color: rgba(37, 99, 235, 0.25);
+  color: var(--helpdesk-primary);
+}
+
+.helpdesk-btn-danger {
+  color: #ffffff;
+  background: var(--helpdesk-danger);
+  border-color: var(--helpdesk-danger);
+}
+
+.helpdesk-btn-danger:hover:not(:disabled) {
+  background: var(--helpdesk-danger-hover);
+  border-color: var(--helpdesk-danger-hover);
+}
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.helpdesk-alert {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-height: 44px;
+  padding: 10px 13px;
+
+  margin-bottom: 16px;
+
+  border: 1px solid transparent;
+  border-radius: var(--helpdesk-radius-md);
+
+  font-size: 13px;
+}
+
+.helpdesk-alert span {
+  flex: 1;
+}
+
+.helpdesk-alert button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 6px;
+
+  color: inherit;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.helpdesk-alert-error {
+  color: var(--helpdesk-danger);
+  background: var(--helpdesk-danger-soft);
+  border-color: rgba(220, 38, 38, 0.18);
+}
+
+.helpdesk-alert-success {
+  color: var(--helpdesk-success);
+  background: var(--helpdesk-success-soft);
+  border-color: rgba(22, 163, 74, 0.18);
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.helpdesk-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 12px;
+
+  margin-bottom: 16px;
+
+  background: var(--helpdesk-surface);
+  border: 1px solid var(--helpdesk-border);
+  border-radius: var(--helpdesk-radius-md);
+
+  box-shadow: var(--helpdesk-shadow-sm);
+}
+
+.helpdesk-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  width: min(360px, 100%);
+  height: 38px;
+
+  padding: 0 11px;
+
+  color: var(--helpdesk-text-muted);
+
+  background: var(--helpdesk-bg);
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: var(--helpdesk-radius-sm);
+
+  transition: var(--helpdesk-transition);
+}
+
+.helpdesk-search:focus-within {
+  border-color: var(--helpdesk-primary);
+  box-shadow: 0 0 0 3px var(--helpdesk-primary-soft);
+}
+
+.helpdesk-search input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  color: var(--helpdesk-text);
+  background: transparent;
+
+  font: inherit;
+  font-size: 13px;
+}
+
+.helpdesk-search input::placeholder {
+  color: var(--helpdesk-text-muted);
+}
+
+.helpdesk-filters {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  overflow-x: auto;
+}
+
+.helpdesk-filters button {
+  min-height: 32px;
+  padding: 0 11px;
+
+  border: 1px solid transparent;
+  border-radius: 7px;
+
+  color: var(--helpdesk-text-secondary);
+  background: transparent;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: var(--helpdesk-transition);
+}
+
+.helpdesk-filters button:hover {
+  color: var(--helpdesk-primary);
+  background: var(--helpdesk-primary-soft);
+}
+
+.helpdesk-filters button.active {
+  color: var(--helpdesk-primary);
+  background: var(--helpdesk-primary-soft);
+  border-color: rgba(37, 99, 235, 0.15);
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.helpdesk-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  gap: 16px;
+
+  min-height: 680px;
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.helpdesk-ticket-panel,
+.helpdesk-detail-panel {
+  min-width: 0;
+
+  background: var(--helpdesk-surface);
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: var(--helpdesk-radius-lg);
+
+  box-shadow: var(--helpdesk-shadow-sm);
+
+  overflow: hidden;
+}
+
+.helpdesk-detail-panel {
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   PANEL HEADER
+   ========================================================= */
+
+.helpdesk-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 68px;
+
+  padding: 14px 17px;
+
+  border-bottom: 1px solid var(--helpdesk-border);
+}
+
+.helpdesk-panel-header h2 {
+  margin: 0;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-panel-header span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 12px;
+
+  color: var(--helpdesk-text-muted);
+}
+
+/* =========================================================
+   TICKET LIST
+   ========================================================= */
+
+.helpdesk-ticket-list {
+  max-height: calc(100vh - 250px);
+  min-height: 560px;
+
+  overflow-y: auto;
+}
+
+.helpdesk-ticket-item {
+  display: block;
+
+  width: 100%;
+
+  padding: 14px 16px;
+
+  text-align: left;
+
+  border: 0;
+  border-bottom: 1px solid var(--helpdesk-border-soft);
+
+  color: var(--helpdesk-text);
+  background: transparent;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  transition: var(--helpdesk-transition);
+}
+
+.helpdesk-ticket-item:hover {
+  background: var(--helpdesk-primary-soft);
+}
+
+.helpdesk-ticket-item.selected {
+  background: var(--helpdesk-primary-soft);
+  box-shadow: inset 3px 0 0 var(--helpdesk-primary);
+}
+
+.helpdesk-ticket-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.helpdesk-ticket-top strong {
+  font-size: 12px;
+  color: var(--helpdesk-text-secondary);
+}
+
+.helpdesk-ticket-item h3 {
+  margin: 0 0 5px;
+
+  overflow: hidden;
+
+  font-size: 14px;
+  line-height: 1.4;
+  font-weight: 650;
+
+  color: var(--helpdesk-text);
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.helpdesk-ticket-item p {
+  margin: 0 0 10px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: var(--helpdesk-text-secondary);
+}
+
+.helpdesk-ticket-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+
+  font-size: 10px;
+
+  color: var(--helpdesk-text-muted);
+}
+
+/* =========================================================
+   PRIORITY
+   ========================================================= */
+
+.helpdesk-priority,
+.helpdesk-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 22px;
+  padding: 0 7px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  white-space: nowrap;
+}
+
+.priority-low {
+  color: var(--helpdesk-info);
+  background: var(--helpdesk-info-soft);
+}
+
+.priority-medium {
+  color: var(--helpdesk-warning);
+  background: var(--helpdesk-warning-soft);
+}
+
+.priority-high,
+.priority-urgent {
+  color: var(--helpdesk-danger);
+  background: var(--helpdesk-danger-soft);
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-open {
+  color: var(--helpdesk-primary);
+  background: var(--helpdesk-primary-soft);
+}
+
+.status-in_progress {
+  color: var(--helpdesk-warning);
+  background: var(--helpdesk-warning-soft);
+}
+
+.status-resolved {
+  color: var(--helpdesk-success);
+  background: var(--helpdesk-success-soft);
+}
+
+.status-closed {
+  color: var(--helpdesk-text-secondary);
+  background: rgba(100, 116, 139, 0.1);
+}
+
+/* =========================================================
+   DETAIL HEADER
+   ========================================================= */
+
+.helpdesk-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 18px 20px;
+
+  border-bottom: 1px solid var(--helpdesk-border);
+}
+
+.helpdesk-detail-id {
+  margin-bottom: 4px;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+
+  color: var(--helpdesk-primary);
+}
+
+.helpdesk-detail-header h2 {
+  margin: 0 0 4px;
+
+  font-size: 18px;
+  line-height: 1.35;
+  font-weight: 700;
+
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-detail-header span {
+  font-size: 11px;
+  color: var(--helpdesk-text-muted);
+}
+
+/* =========================================================
+   ICON BUTTON
+   ========================================================= */
+
+.helpdesk-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  padding: 0;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 8px;
+
+  color: var(--helpdesk-text-secondary);
+  background: var(--helpdesk-surface);
+
+  cursor: pointer;
+
+  transition: var(--helpdesk-transition);
+}
+
+.helpdesk-icon-btn:hover {
+  color: var(--helpdesk-primary);
+  background: var(--helpdesk-primary-soft);
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+/* =========================================================
+   META GRID
+   ========================================================= */
+
+.helpdesk-meta-grid {
+  display: grid;
+  grid-template-columns:
+    minmax(130px, 1fr)
+    minmax(130px, 1fr)
+    minmax(150px, 1.2fr)
+    auto;
+
+  align-items: end;
+  gap: 10px;
+
+  padding: 14px 20px;
+
+  border-bottom: 1px solid var(--helpdesk-border);
+
+  background: var(--helpdesk-bg);
+}
+
+.helpdesk-meta-card {
+  min-width: 0;
+}
+
+.helpdesk-meta-card > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  color: var(--helpdesk-text-muted);
+}
+
+.helpdesk-meta-card select,
+.helpdesk-assigned-input,
+.helpdesk-assigned-input input {
+  height: 36px;
+}
+
+.helpdesk-meta-card select {
+  width: 100%;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 7px;
+
+  outline: 0;
+
+  color: var(--helpdesk-text);
+  background: var(--helpdesk-surface);
+
+  font: inherit;
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.helpdesk-meta-card select:focus {
+  border-color: var(--helpdesk-primary);
+  box-shadow: 0 0 0 3px var(--helpdesk-primary-soft);
+}
+
+.helpdesk-assigned-input {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 7px;
+
+  color: var(--helpdesk-text-muted);
+  background: var(--helpdesk-surface);
+}
+
+.helpdesk-assigned-input:focus-within {
+  border-color: var(--helpdesk-primary);
+  box-shadow: 0 0 0 3px var(--helpdesk-primary-soft);
+}
+
+.helpdesk-assigned-input input {
+  width: 100%;
+
+  padding: 0;
+
+  border: 0;
+  outline: 0;
+
+  color: var(--helpdesk-text);
+  background: transparent;
+
+  font: inherit;
+  font-size: 12px;
+}
+
+.helpdesk-update-btn {
+  height: 36px;
+}
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.helpdesk-description {
+  padding: 18px 20px;
+
+  border-bottom: 1px solid var(--helpdesk-border);
+}
+
+.helpdesk-section-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 11px;
+
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-section-title svg {
+  color: var(--helpdesk-primary);
+}
+
+.helpdesk-section-title span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.helpdesk-section-title small {
+  margin-left: auto;
+
+  font-size: 11px;
+  font-weight: 500;
+
+  color: var(--helpdesk-text-muted);
+}
+
+.helpdesk-description > p {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.65;
+
+  color: var(--helpdesk-text-secondary);
+
+  white-space: pre-wrap;
+}
+
+.helpdesk-requester {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 13px;
+
+  font-size: 12px;
+
+  color: var(--helpdesk-text-secondary);
+}
+
+.helpdesk-requester svg {
+  color: var(--helpdesk-primary);
+}
+
+.helpdesk-requester strong {
+  color: var(--helpdesk-text);
+}
+
+/* =========================================================
+   CONVERSATION
+   ========================================================= */
+
+.helpdesk-conversation {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 260px;
+
+  border-bottom: 1px solid var(--helpdesk-border);
+}
+
+.helpdesk-conversation > .helpdesk-section-title {
+  padding: 16px 20px 0;
+}
+
+.helpdesk-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+
+  max-height: 390px;
+
+  padding: 0 20px 18px;
+
+  overflow-y: auto;
+}
+
+.helpdesk-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.helpdesk-message-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  border-radius: 50%;
+
+  color: var(--helpdesk-primary);
+  background: var(--helpdesk-primary-soft);
+
+  border: 1px solid rgba(37, 99, 235, 0.12);
+}
+
+.helpdesk-message-body {
+  min-width: 0;
+  flex: 1;
+
+  padding: 10px 12px;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 10px;
+
+  background: var(--helpdesk-surface-2);
+}
+
+.helpdesk-message.internal .helpdesk-message-body {
+  border-color: rgba(217, 119, 6, 0.22);
+  background: var(--helpdesk-warning-soft);
+}
+
+.helpdesk-message-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 6px;
+}
+
+.helpdesk-message-header strong {
+  font-size: 12px;
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-message-header time {
+  margin-left: auto;
+
+  font-size: 10px;
+
+  color: var(--helpdesk-text-muted);
+}
+
+.internal-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 2px 6px;
+
+  border-radius: 4px;
+
+  color: var(--helpdesk-warning);
+  background: rgba(217, 119, 6, 0.12);
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.helpdesk-message-content {
+  font-size: 12px;
+  line-height: 1.6;
+
+  color: var(--helpdesk-text-secondary);
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.helpdesk-attachment {
+  margin-top: 8px;
+
+  padding-top: 8px;
+
+  border-top: 1px dashed var(--helpdesk-border);
+
+  font-size: 10px;
+
+  color: var(--helpdesk-primary);
+}
+
+/* =========================================================
+   REPLY
+   ========================================================= */
+
+.helpdesk-reply {
+  padding: 16px 20px;
+}
+
+.helpdesk-reply textarea,
+.helpdesk-create-form textarea,
+.helpdesk-create-form input {
+  width: 100%;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 8px;
+
+  outline: 0;
+
+  color: var(--helpdesk-text);
+  background: var(--helpdesk-surface);
+
+  font: inherit;
+  font-size: 13px;
+
+  transition: var(--helpdesk-transition);
+}
+
+.helpdesk-reply textarea {
+  display: block;
+
+  min-height: 100px;
+
+  padding: 11px 12px;
+
+  resize: vertical;
+}
+
+.helpdesk-reply textarea::placeholder,
+.helpdesk-create-form input::placeholder,
+.helpdesk-create-form textarea::placeholder {
+  color: var(--helpdesk-text-muted);
+}
+
+.helpdesk-reply textarea:focus,
+.helpdesk-create-form textarea:focus,
+.helpdesk-create-form input:focus {
+  border-color: var(--helpdesk-primary);
+  box-shadow: 0 0 0 3px var(--helpdesk-primary-soft);
+}
+
+.helpdesk-message-error {
+  margin-bottom: 9px;
+
+  padding: 8px 10px;
+
+  border-radius: 7px;
+
+  color: var(--helpdesk-danger);
+  background: var(--helpdesk-danger-soft);
+
+  font-size: 11px;
+}
+
+.helpdesk-reply-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: 10px;
+}
+
+.helpdesk-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  font-size: 12px;
+
+  color: var(--helpdesk-text-secondary);
+
+  cursor: pointer;
+}
+
+.helpdesk-checkbox input {
+  width: 15px;
+  height: 15px;
+
+  margin: 0;
+
+  accent-color: var(--helpdesk-primary);
+}
+
+/* =========================================================
+   DANGER ZONE
+   ========================================================= */
+
+.helpdesk-danger-zone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin: auto 20px 20px;
+  padding: 13px 14px;
+
+  border: 1px solid rgba(220, 38, 38, 0.16);
+  border-radius: 9px;
+
+  background: var(--helpdesk-danger-soft);
+}
+
+.helpdesk-danger-zone > div {
+  min-width: 0;
+}
+
+.helpdesk-danger-zone strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  font-size: 12px;
+
+  color: var(--helpdesk-danger);
+}
+
+.helpdesk-danger-zone span {
+  display: block;
+
+  font-size: 10px;
+
+  color: var(--helpdesk-text-secondary);
+}
+
+/* =========================================================
+   EMPTY / NO SELECTION
+   ========================================================= */
+
+.helpdesk-empty,
+.helpdesk-no-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  min-height: 240px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  color: var(--helpdesk-text-muted);
+}
+
+.helpdesk-empty svg,
+.helpdesk-no-selection svg {
+  margin-bottom: 10px;
+}
+
+.helpdesk-empty strong,
+.helpdesk-no-selection h2 {
+  margin: 0 0 5px;
+
+  color: var(--helpdesk-text);
+
+  font-size: 14px;
+}
+
+.helpdesk-empty span,
+.helpdesk-no-selection p {
+  margin: 0;
+
+  font-size: 12px;
+
+  color: var(--helpdesk-text-secondary);
+}
+
+.helpdesk-no-selection {
+  flex: 1;
+
+  min-height: 600px;
+}
+
+.helpdesk-no-selection h2 {
+  font-size: 17px;
+}
+
+.helpdesk-no-selection p {
+  max-width: 320px;
+
+  line-height: 1.6;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.helpdesk-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, 0.48);
+
+  backdrop-filter: blur(3px);
+}
+
+.helpdesk-modal {
+  width: min(580px, 100%);
+  max-height: calc(100vh - 40px);
+
+  overflow-y: auto;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 16px;
+
+  background: var(--helpdesk-surface);
+
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.2);
+}
+
+.helpdesk-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 18px 20px;
+
+  border-bottom: 1px solid var(--helpdesk-border);
+}
+
+.helpdesk-modal-header h2 {
+  margin: 0 0 4px;
+
+  font-size: 17px;
+
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-modal-header p {
+  margin: 0;
+
+  font-size: 11px;
+
+  color: var(--helpdesk-text-secondary);
+}
+
+.helpdesk-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  padding: 20px;
+}
+
+.helpdesk-create-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  color: var(--helpdesk-text);
+}
+
+.helpdesk-create-form input {
+  height: 40px;
+
+  padding: 0 11px;
+}
+
+.helpdesk-create-form select {
+  width: 100%;
+  height: 40px;
+
+  padding: 0 10px;
+
+  border: 1px solid var(--helpdesk-border);
+  border-radius: 8px;
+
+  outline: 0;
+
+  color: var(--helpdesk-text);
+  background: var(--helpdesk-surface);
+
+  font: inherit;
+  font-size: 13px;
+
+  cursor: pointer;
+}
+
+.helpdesk-create-form select:focus {
+  border-color: var(--helpdesk-primary);
+  box-shadow: 0 0 0 3px var(--helpdesk-primary-soft);
+}
+
+.helpdesk-create-form textarea {
+  min-height: 140px;
+
+  padding: 10px 11px;
+
+  resize: vertical;
+}
+
+.helpdesk-modal-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 9px;
+
+  padding-top: 4px;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.helpdesk-page ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.helpdesk-page ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.helpdesk-page ::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+
+  background: rgba(100, 116, 139, 0.28);
+}
+
+.helpdesk-page ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.45);
+}
+
+/* =========================================================
+   ANIMATION
+   ========================================================= */
+
+.helpdesk-spin {
+  animation: helpdesk-spin 0.9s linear infinite;
+}
+
+@keyframes helpdesk-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] .helpdesk-page,
+.dark .helpdesk-page {
+  --helpdesk-bg: var(--bg-primary, #0f172a);
+  --helpdesk-surface: var(--bg-secondary, #111827);
+  --helpdesk-surface-2: var(--card-bg, #172033);
+
+  --helpdesk-border: var(--border-color, #273449);
+  --helpdesk-border-soft: rgba(148, 163, 184, 0.12);
+
+  --helpdesk-text: var(--text-primary, #f1f5f9);
+  --helpdesk-text-secondary: var(--text-secondary, #94a3b8);
+  --helpdesk-text-muted: var(--text-muted, #64748b);
+
+  --helpdesk-primary: var(--primary-color, #3b82f6);
+  --helpdesk-primary-hover: #60a5fa;
+
+  --helpdesk-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.22);
+
+  --helpdesk-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .helpdesk-layout {
+    grid-template-columns: 300px minmax(0, 1fr);
+  }
+
+  .helpdesk-meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .helpdesk-update-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .helpdesk-page {
+    padding: 16px;
+  }
+
+  .helpdesk-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .helpdesk-header-actions {
+    width: 100%;
+  }
+
+  .helpdesk-header-actions .helpdesk-btn {
+    flex: 1;
+  }
+
+  .helpdesk-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .helpdesk-search {
+    width: 100%;
+  }
+
+  .helpdesk-filters {
+    width: 100%;
+    padding-bottom: 2px;
+  }
+
+  .helpdesk-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .helpdesk-ticket-list {
+    max-height: 420px;
+    min-height: 0;
+  }
+
+  .helpdesk-no-selection {
+    min-height: 360px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+  .helpdesk-page {
+    padding: 12px;
+  }
+
+  .helpdesk-title h1 {
+    font-size: 21px;
+  }
+
+  .helpdesk-title p {
+    font-size: 12px;
+  }
+
+  .helpdesk-title-icon {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+
+  .helpdesk-detail-header,
+  .helpdesk-description,
+  .helpdesk-reply {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .helpdesk-meta-grid {
+    grid-template-columns: 1fr;
+
+    padding: 13px 14px;
+  }
+
+  .helpdesk-conversation > .helpdesk-section-title {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .helpdesk-messages {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .helpdesk-reply-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .helpdesk-reply-actions .helpdesk-btn {
+    width: 100%;
+  }
+
+  .helpdesk-danger-zone {
+    align-items: stretch;
+    flex-direction: column;
+
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  .helpdesk-danger-zone .helpdesk-btn {
+    width: 100%;
+  }
+
+  .helpdesk-message-header {
+    flex-wrap: wrap;
+  }
+
+  .helpdesk-message-header time {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .helpdesk-modal-backdrop {
+    padding: 10px;
+  }
+
+  .helpdesk-modal {
+    max-height: calc(100vh - 20px);
+    border-radius: 12px;
+  }
+
+  .helpdesk-modal-header,
+  .helpdesk-create-form {
+    padding: 15px;
+  }
+
+  .helpdesk-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .helpdesk-modal-actions .helpdesk-btn {
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.helpdesk-page button:focus-visible,
+.helpdesk-page input:focus-visible,
+.helpdesk-page select:focus-visible,
+.helpdesk-page textarea:focus-visible {
+  outline: 2px solid var(--helpdesk-primary);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .helpdesk-page *,
+  .helpdesk-page *::before,
+  .helpdesk-page *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,216 @@
+/* =========================================================
+   ABN FLEET
+   APPLICATION FOOTER
+   LIGHT / DARK THEME
+   ========================================================= */
+
+.app-footer {
+  min-height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 10px 22px;
+
+  flex-shrink: 0;
+
+  /* Theme */
+  background: var(--bg-surface);
+
+  border-top: 1px solid var(--border-color);
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* =========================================================
+   LEFT
+   ========================================================= */
+
+.app-footer-left {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.app-footer-left strong {
+  color: var(--text-primary);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+
+  white-space: nowrap;
+}
+
+.app-footer-left span {
+  color: var(--text-muted);
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RIGHT
+   ========================================================= */
+
+.app-footer-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 8px;
+
+  color: var(--text-muted);
+
+  white-space: nowrap;
+}
+
+.app-footer-status {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 5px;
+
+  color: var(--text-success);
+
+  font-weight: 600;
+}
+
+.app-footer-status svg {
+  flex-shrink: 0;
+}
+
+.app-footer-separator {
+  color: var(--text-muted);
+
+  opacity: 0.45;
+}
+
+.app-footer-version,
+.app-footer-copyright {
+  color: var(--text-muted);
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+[data-theme="dark"] .app-footer {
+  background: var(--bg-surface);
+  border-top-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .app-footer-left strong {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .app-footer-left span,
+[data-theme="dark"] .app-footer-version,
+[data-theme="dark"] .app-footer-copyright {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .app-footer-separator {
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+[data-theme="light"] .app-footer {
+  background: var(--bg-surface);
+  border-top-color: var(--border-color);
+  color: var(--text-muted);
+}
+
+[data-theme="light"] .app-footer-left strong {
+  color: var(--text-primary);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .app-footer {
+    padding: 10px 16px;
+
+    gap: 12px;
+  }
+
+  .app-footer-left span {
+    display: none;
+  }
+
+  .app-footer-right {
+    gap: 6px;
+  }
+
+  .app-footer-copyright,
+  .app-footer-copyright-separator {
+    display: none;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .app-footer {
+    min-height: 44px;
+
+    padding: 9px 14px;
+
+    gap: 10px;
+  }
+
+  .app-footer-left strong {
+    font-size: 10px;
+  }
+
+  .app-footer-right {
+    font-size: 11px;
+  }
+
+  .app-footer-version,
+  .app-footer-copyright,
+  .app-footer-copyright-separator {
+    display: none;
+  }
+}
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 360px) {
+  .app-footer {
+    justify-content: center;
+  }
+
+  .app-footer-left {
+    display: none;
+  }
+
+  .app-footer-right {
+    justify-content: center;
+  }
+}
