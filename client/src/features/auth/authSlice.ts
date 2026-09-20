@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import api from "../../api/axios";
 
 /* =========================================================
-   ABN FLEET SYSTEM
+   ABN TRADE
    AUTH SLICE
    ========================================================= */
 
@@ -21,10 +21,41 @@ export interface AuthUser {
   status?: string;
 }
 
+/* =========================================================
+   LOGIN RESPONSE
+   Backend:
+   {
+     success: true,
+     message: "...",
+     data: {
+       user,
+       accessToken,
+       refreshToken,
+       expiresIn
+     }
+   }
+   ========================================================= */
+
 interface LoginResponse {
   success: boolean;
   message?: string;
+  data?: {
+    accessToken: string;
+    refreshToken?: string;
+    expiresIn?: string;
+    user: AuthUser;
+  };
+}
+
+/* =========================================================
+   LOGIN RESULT
+   Payload login harus selalu memiliki data yang valid.
+   ========================================================= */
+
+interface LoginResult {
   accessToken: string;
+  refreshToken?: string;
+  expiresIn?: string;
   user: AuthUser;
 }
 
@@ -79,17 +110,11 @@ export interface AuthState {
 
 const initialState: AuthState = {
   user: null,
-
   accessToken: null,
-
   authenticated: false,
-
   loading: false,
-
   initialized: false,
-
   refreshing: false,
-
   error: null,
 };
 
@@ -99,7 +124,7 @@ const initialState: AuthState = {
    ========================================================= */
 
 export const login = createAsyncThunk<
-  LoginResponse,
+  LoginResult,
   {
     email: string;
     password: string;
@@ -113,15 +138,31 @@ export const login = createAsyncThunk<
       withCredentials: true,
     });
 
-    if (
-      !response.data?.success ||
-      !response.data?.accessToken ||
-      !response.data?.user
-    ) {
-      return thunkAPI.rejectWithValue("Login gagal.");
+    const data = response.data?.data;
+
+    /*
+     * Backend response harus:
+     *
+     * response.data.success === true
+     * response.data.data.accessToken
+     * response.data.data.user
+     */
+
+    if (!response.data?.success || !data?.accessToken || !data?.user) {
+      return thunkAPI.rejectWithValue(response.data?.message || "Login gagal.");
     }
 
-    return response.data;
+    /*
+     * Setelah validasi di atas,
+     * TypeScript mengetahui data tersedia.
+     */
+
+    return {
+      accessToken: data.accessToken,
+      refreshToken: data.refreshToken,
+      expiresIn: data.expiresIn,
+      user: data.user,
+    };
   } catch (error: any) {
     const message =
       error?.response?.data?.message ||
@@ -240,7 +281,6 @@ export const getCurrentUser = createAsyncThunk<
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
-
       withCredentials: true,
     });
 
@@ -275,9 +315,7 @@ const authSlice = createSlice({
 
     setAccessToken: (state, action: PayloadAction<string>) => {
       state.accessToken = action.payload;
-
       state.authenticated = true;
-
       state.error = null;
     },
 
@@ -287,9 +325,7 @@ const authSlice = createSlice({
 
     setUser: (state, action: PayloadAction<AuthUser>) => {
       state.user = action.payload;
-
       state.authenticated = true;
-
       state.error = null;
     },
 
@@ -299,13 +335,9 @@ const authSlice = createSlice({
 
     clearAuth: (state) => {
       state.user = null;
-
       state.accessToken = null;
-
       state.authenticated = false;
-
       state.loading = false;
-
       state.refreshing = false;
 
       /*
@@ -357,7 +389,6 @@ const authSlice = createSlice({
 
       .addCase(login.pending, (state) => {
         state.loading = true;
-
         state.error = null;
       })
 
@@ -365,7 +396,6 @@ const authSlice = createSlice({
         state.loading = false;
 
         state.initialized = true;
-
         state.authenticated = true;
 
         state.accessToken = action.payload.accessToken;
@@ -373,7 +403,6 @@ const authSlice = createSlice({
         state.user = action.payload.user;
 
         state.refreshing = false;
-
         state.error = null;
       })
 
@@ -381,11 +410,9 @@ const authSlice = createSlice({
         state.loading = false;
 
         state.initialized = true;
-
         state.authenticated = false;
 
         state.accessToken = null;
-
         state.user = null;
 
         state.refreshing = false;
@@ -399,26 +426,19 @@ const authSlice = createSlice({
 
       .addCase(logout.pending, (state) => {
         state.loading = true;
-
         state.error = null;
       })
 
       .addCase(logout.fulfilled, (state) => {
         state.user = null;
-
         state.accessToken = null;
 
         state.authenticated = false;
 
         state.loading = false;
-
         state.refreshing = false;
 
-        /*
-         * Logout selesai.
-         */
         state.initialized = true;
-
         state.error = null;
       })
 
@@ -429,13 +449,11 @@ const authSlice = createSlice({
          */
 
         state.user = null;
-
         state.accessToken = null;
 
         state.authenticated = false;
 
         state.loading = false;
-
         state.refreshing = false;
 
         state.initialized = true;
@@ -449,13 +467,11 @@ const authSlice = createSlice({
 
       .addCase(register.pending, (state) => {
         state.loading = true;
-
         state.error = null;
       })
 
       .addCase(register.fulfilled, (state) => {
         state.loading = false;
-
         state.error = null;
 
         /*
@@ -475,7 +491,6 @@ const authSlice = createSlice({
 
       .addCase(getCurrentUser.pending, (state) => {
         state.loading = true;
-
         state.error = null;
       })
 
@@ -483,13 +498,11 @@ const authSlice = createSlice({
         state.loading = false;
 
         state.initialized = true;
-
         state.authenticated = true;
 
         state.user = action.payload;
 
         state.refreshing = false;
-
         state.error = null;
       })
 
@@ -497,11 +510,9 @@ const authSlice = createSlice({
         state.loading = false;
 
         state.initialized = true;
-
         state.authenticated = false;
 
         state.user = null;
-
         state.accessToken = null;
 
         state.refreshing = false;

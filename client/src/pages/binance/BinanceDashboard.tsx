@@ -1,5 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
-
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Activity,
   BarChart3,
@@ -190,177 +189,284 @@ export default function BinanceDashboard() {
 
   const [realtimeStatus, setRealtimeStatus] = useState<BinanceRealtimeStatus>({
     connected: false,
-
     source: "BINANCE_WS",
-
     symbols: [],
-
     symbolCount: 0,
-
     timestamp: "",
   });
 
   const [socketConnected, setSocketConnected] = useState(false);
-
   const [lastUpdate, setLastUpdate] = useState("");
-
   const [refreshing, setRefreshing] = useState(false);
 
   /* =======================================================
    * NATIVE WEBSOCKET /ws
+   * SINGLE SOCKET + RECONNECT + CLEANUP
    * ======================================================= */
 
+  const wsRef = useRef<WebSocket | null>(null);
+  const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const unmountedRef = useRef(false);
+  const connectingRef = useRef(false);
+
   useEffect(() => {
-    console.log("[BINANCE CLIENT] Connecting:", WS_URL);
+    unmountedRef.current = false;
 
-    const ws = new WebSocket(WS_URL);
-
-    /* -------------------------------------------------------
-     * OPEN
-     * ------------------------------------------------------- */
-
-    ws.onopen = () => {
-      console.log("[BINANCE CLIENT] WebSocket connected");
-
-      setSocketConnected(true);
-
-      /* -----------------------------------------------
-       * REGISTER AS DASHBOARD
-       * ----------------------------------------------- */
-
-      ws.send(
-        JSON.stringify({
-          type: "DASHBOARD_CONNECT",
-
-          client: "ABN_TRADING",
-
-          module: "BINANCE",
-        }),
-      );
-    };
-
-    /* -------------------------------------------------------
-     * MESSAGE
-     * ------------------------------------------------------- */
-
-    ws.onmessage = (event) => {
-      try {
-        const message = JSON.parse(event.data);
-
-        if (!message?.type) {
-          return;
-        }
-
-        /* =============================================
-         * BINANCE TICKER
-         * ============================================= */
-
-        if (message.type === "BINANCE_TICKER") {
-          const payload = message as BinanceTicker;
-
-          if (!payload.symbol) {
-            return;
-          }
-
-          const symbol = payload.symbol.toUpperCase();
-
-          setTickers((previous) => ({
-            ...previous,
-
-            [symbol]: payload,
-          }));
-
-          setLastUpdate(payload.timestamp);
-
-          return;
-        }
-
-        /* =============================================
-         * BINANCE STATUS
-         * ============================================= */
-
-        if (message.type === "BINANCE_STATUS") {
-          const status = message as BinanceRealtimeStatus;
-
-          setRealtimeStatus(status);
-
-          if (status.timestamp) {
-            setLastUpdate(status.timestamp);
-          }
-
-          return;
-        }
-
-        /* =============================================
-         * DASHBOARD CONNECTED
-         * ============================================= */
-
-        if (message.type === "DASHBOARD_CONNECTED") {
-          console.log("[BINANCE CLIENT] Dashboard registered");
-
-          return;
-        }
-
-        /* =============================================
-         * SERVER CONNECTED
-         * ============================================= */
-
-        if (message.type === "CONNECTED") {
-          console.log("[BINANCE CLIENT]", message.message);
-
-          return;
-        }
-
-        /* =============================================
-         * ERROR
-         * ============================================= */
-
-        if (message.type === "ERROR") {
-          console.error("[BINANCE CLIENT] Server error:", message.message);
-        }
-      } catch (error) {
-        console.error("[BINANCE CLIENT] Message parse error:", error);
+    const clearReconnectTimer = () => {
+      if (reconnectTimerRef.current !== null) {
+        clearTimeout(reconnectTimerRef.current);
+        reconnectTimerRef.current = null;
       }
     };
 
-    /* -------------------------------------------------------
-     * CLOSE
-     * ------------------------------------------------------- */
+    const cleanupSocket = () => {
+      const socket = wsRef.current;
 
-    ws.onclose = (event) => {
-      console.warn(
-        "[BINANCE CLIENT] WebSocket closed:",
-        event.code,
-        event.reason,
-      );
+      if (!socket) {
+        return;
+      }
 
-      setSocketConnected(false);
+      wsRef.current = null;
 
-      setRealtimeStatus((previous) => ({
-        ...previous,
+      /*
+       * Remove handlers before closing.
+       * This prevents cleanup from triggering reconnect.
+       */
+      socket.onopen = null;
+      socket.onmessage = null;
+      socket.onclose = null;
+      socket.onerror = null;
 
-        connected: false,
-      }));
+      if (
+        socket.readyState === WebSocket.OPEN ||
+        socket.readyState === WebSocket.CONNECTING
+      ) {
+        socket.close();
+      }
     };
 
-    /* -------------------------------------------------------
-     * ERROR
-     * ------------------------------------------------------- */
+    const scheduleReconnect = () => {
+      if (unmountedRef.current) {
+        return;
+      }
 
-    ws.onerror = (error) => {
-      console.error("[BINANCE CLIENT] WebSocket error:", error);
+      if (reconnectTimerRef.current !== null) {
+        return;
+      }
 
-      setSocketConnected(false);
+      console.log("[BINANCE CLIENT] Reconnecting in 3 seconds...");
+
+      reconnectTimerRef.current = setTimeout(() => {
+        reconnectTimerRef.current = null;
+
+        if (!unmountedRef.current) {
+          connect();
+        }
+      }, 3000);
     };
 
-    /* -------------------------------------------------------
-     * CLEANUP
-     * ------------------------------------------------------- */
+    const connect = () => {
+      if (unmountedRef.current) {
+        return;
+      }
+
+      /*
+       * Prevent duplicate connection attempts.
+       */
+      if (connectingRef.current) {
+        return;
+      }
+
+      /*
+       * Prevent multiple active sockets.
+       */
+      const existingSocket = wsRef.current;
+
+      if (
+        existingSocket &&
+        (existingSocket.readyState === WebSocket.OPEN ||
+          existingSocket.readyState === WebSocket.CONNECTING)
+      ) {
+        return;
+      }
+
+      connectingRef.current = true;
+
+      console.log("[BINANCE CLIENT] Connecting:", WS_URL);
+
+      const ws = new WebSocket(WS_URL);
+
+      wsRef.current = ws;
+
+      /* ---------------------------------------------------
+       * OPEN
+       * --------------------------------------------------- */
+
+      ws.onopen = () => {
+        connectingRef.current = false;
+
+        if (unmountedRef.current) {
+          ws.close();
+          return;
+        }
+
+        console.log("[BINANCE CLIENT] WebSocket connected");
+
+        setSocketConnected(true);
+
+        ws.send(
+          JSON.stringify({
+            type: "DASHBOARD_CONNECT",
+            client: "ABN_TRADING",
+            module: "BINANCE",
+          }),
+        );
+      };
+
+      /* ---------------------------------------------------
+       * MESSAGE
+       * --------------------------------------------------- */
+
+      ws.onmessage = (event) => {
+        try {
+          const message = JSON.parse(event.data);
+
+          if (!message?.type) {
+            return;
+          }
+
+          /* =============================================
+           * BINANCE TICKER
+           * ============================================= */
+
+          if (message.type === "BINANCE_TICKER") {
+            const payload = message as BinanceTicker;
+
+            if (!payload.symbol) {
+              return;
+            }
+
+            const symbol = payload.symbol.toUpperCase();
+
+            setTickers((previous) => ({
+              ...previous,
+              [symbol]: payload,
+            }));
+
+            setLastUpdate(payload.timestamp);
+
+            return;
+          }
+
+          /* =============================================
+           * BINANCE STATUS
+           * ============================================= */
+
+          if (message.type === "BINANCE_STATUS") {
+            const status = message as BinanceRealtimeStatus;
+
+            setRealtimeStatus(status);
+
+            if (status.timestamp) {
+              setLastUpdate(status.timestamp);
+            }
+
+            return;
+          }
+
+          /* =============================================
+           * DASHBOARD CONNECTED
+           * ============================================= */
+
+          if (message.type === "DASHBOARD_CONNECTED") {
+            console.log("[BINANCE CLIENT] Dashboard registered");
+            return;
+          }
+
+          /* =============================================
+           * SERVER CONNECTED
+           * ============================================= */
+
+          if (message.type === "CONNECTED") {
+            console.log("[BINANCE CLIENT]", message.message);
+            return;
+          }
+
+          /* =============================================
+           * ERROR
+           * ============================================= */
+
+          if (message.type === "ERROR") {
+            console.error("[BINANCE CLIENT] Server error:", message.message);
+          }
+        } catch (error) {
+          console.error("[BINANCE CLIENT] Message parse error:", error);
+        }
+      };
+
+      /* ---------------------------------------------------
+       * CLOSE
+       * --------------------------------------------------- */
+
+      ws.onclose = (event) => {
+        connectingRef.current = false;
+
+        if (wsRef.current === ws) {
+          wsRef.current = null;
+        }
+
+        console.warn(
+          "[BINANCE CLIENT] WebSocket closed:",
+          event.code,
+          event.reason,
+        );
+
+        setSocketConnected(false);
+
+        setRealtimeStatus((previous) => ({
+          ...previous,
+          connected: false,
+        }));
+
+        /*
+         * Reconnect only while component is mounted.
+         */
+        if (!unmountedRef.current) {
+          scheduleReconnect();
+        }
+      };
+
+      /* ---------------------------------------------------
+       * ERROR
+       * --------------------------------------------------- */
+
+      ws.onerror = (error) => {
+        console.error("[BINANCE CLIENT] WebSocket error:", error);
+
+        setSocketConnected(false);
+      };
+    };
+
+    /* -----------------------------------------------------
+     * INITIAL CONNECTION
+     * ----------------------------------------------------- */
+
+    connect();
+
+    /* -----------------------------------------------------
+     * CLEANUP / UNMOUNT
+     * ----------------------------------------------------- */
 
     return () => {
-      console.log("[BINANCE CLIENT] Closing WebSocket");
+      console.log("[BINANCE CLIENT] Cleaning up WebSocket");
 
-      ws.close();
+      unmountedRef.current = true;
+
+      clearReconnectTimer();
+
+      connectingRef.current = false;
+
+      cleanupSocket();
     };
   }, []);
 

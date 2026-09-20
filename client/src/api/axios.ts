@@ -13,7 +13,7 @@ import {
    ========================================================= */
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  import.meta.env.VITE_API_URL || "http://localhost:5004/api";
 
 /* =========================================================
    TYPES
@@ -158,7 +158,7 @@ export const refreshAccessToken = async (): Promise<string | null> => {
        */
 
       const response = await refreshApi.post<RefreshResponse>(
-        "/auth/token",
+        "/auth/refresh",
         {},
       );
 
@@ -290,7 +290,7 @@ api.interceptors.response.use(
     if (
       url.includes("/auth/login") ||
       url.includes("/auth/register") ||
-      url.includes("/auth/token") ||
+      url.includes("/auth/refresh") ||
       url.includes("/auth/logout")
     ) {
       return Promise.reject(error);
